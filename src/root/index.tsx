@@ -10,6 +10,7 @@ import SplashScreen from '../components/SplashScreen/SplashScreen';
 // import OnBoardingScreen from '../components/OnboardingScreen/OnBoardingScreen';
 import HomeScreen from '../components/HomeScreen/HomeScreen';
 import OnBoardScreen from '../components/OnboardingScreen/OnBoardScreen';
+import BottomTabNavigation from './BottomTabNavigation';
 
 const index = () => {
   // Stack for navigation purposes
@@ -65,9 +66,14 @@ const index = () => {
           component={OnBoardScreen}
           options={{headerShown: false}}
         /> */}
-          <Stack.Screen
+          {/* <Stack.Screen
             name="HomeScreen"
             component={HomeScreen}
+            options={{headerShown: false}}
+          /> */}
+          <Stack.Screen
+            name="BottomTabNavigation"
+            component={BottomTabNavigation}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
