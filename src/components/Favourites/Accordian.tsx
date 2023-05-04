@@ -92,42 +92,6 @@ const Accordian = () => {
                     </Text>
                   </View>
                 </View>
-                {/* <View style={styles.nutrientDetailsRowOne}>
-                  <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Fat (g)</Text>
-                    <Text style={styles.nutrientValue}>{item.fat_total_g}</Text>
-                  </View>
-                  <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Fiber (g)</Text>
-                    <Text style={styles.nutrientValue}>{item.fiber_g}</Text>
-                  </View>
-                  <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Potassium (mg)</Text>
-                    <Text style={styles.nutrientValue}>
-                      {item.potassium_mg}
-                    </Text>
-                  </View>
-                  <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Protein (g)</Text>
-                    <Text style={styles.nutrientValue}>{item.protein_g}</Text>
-                  </View>
-                </View>
-                <View style={styles.nutrientDetailsRowOne}>
-                  <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Serving Size (g)</Text>
-                    <Text style={styles.nutrientValue}>
-                      {item.serving_size_g}
-                    </Text>
-                  </View>
-                  <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Sodium (mg)</Text>
-                    <Text style={styles.nutrientValue}>{item.sodium_mg}</Text>
-                  </View>
-                  <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Sugar (g)</Text>
-                    <Text style={styles.nutrientValue}>{item.sugar_g}</Text>
-                  </View>
-                </View> */}
               </View>
             </View>
           </CollapseBody>

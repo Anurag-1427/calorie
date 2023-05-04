@@ -55,35 +55,6 @@ const SearchScreen = () => {
     return name.charAt(0).toUpperCase() + name.slice(1);
   };
 
-  // const saveMealName = async name => {
-  //   try {
-  //     // let initialName = [];
-  //     // console.log(`Inital name`);
-  //     // console.log(initialName);
-  //     // await AsyncStorage.setItem('mealName', JSON.stringify(initialName));
-
-  //     const mealName = await AsyncStorage.getItem('mealName');
-  //     const parsedJsonMealName = mealName ? JSON.parse(mealName) : [];
-  //     //Object
-  //     // parsedJsonMealName['mealName'] = name;
-  //     // Object.assign(...parsedJsonMealName, {mealName: name});
-  //     // Object.assign(...parsedJsonMealName, {mealName: name});
-
-  //     //Array
-  //     parsedJsonMealName.push(name);
-  //     await AsyncStorage.setItem(
-  //       'mealName',
-  //       JSON.stringify(parsedJsonMealName),
-  //     );
-  //     console.log(parsedJsonMealName);
-  //     // const savedUser = await AsyncStorage.getItem('user');
-  //     // const currentUser = JSON.parse(savedUser);
-  //     // console.log(currentUser);
-  //   } catch (error) {
-  //     console.log(`Error is:`);
-  //     console.log(error);
-  //   }
-  // };
   const saveMealName = async item => {
     try {
       const mealName = await AsyncStorage.getItem('mealName');
@@ -113,7 +84,6 @@ const SearchScreen = () => {
     console.log(`Console`);
     console.log(item);
     const onPressAddToCart = () => {
-      // saveMealName(item.name);
       saveMealName(item);
     };
     return (
