@@ -8,7 +8,6 @@ import {NavigationContainer} from '@react-navigation/native';
 // Screens
 import SplashScreen from '../components/SplashScreen/SplashScreen';
 // import OnBoardingScreen from '../components/OnboardingScreen/OnBoardingScreen';
-import HomeScreen from '../components/HomeScreen/HomeScreen';
 import OnBoardScreen from '../components/OnboardingScreen/OnBoardScreen';
 import BottomTabNavigation from './BottomTabNavigation';
 
@@ -61,16 +60,6 @@ const index = () => {
               options={{headerShown: false}}
             />
           )}
-          {/* <Stack.Screen
-          name="OnBoardingScreen"
-          component={OnBoardScreen}
-          options={{headerShown: false}}
-        /> */}
-          {/* <Stack.Screen
-            name="HomeScreen"
-            component={HomeScreen}
-            options={{headerShown: false}}
-          /> */}
           <Stack.Screen
             name="BottomTabNavigation"
             component={BottomTabNavigation}

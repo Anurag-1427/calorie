@@ -80,11 +80,54 @@ const SearchScreen = () => {
     }
   };
 
+  // this if for to remove the items from the key 'mealName'
+  // const saveMealName = async item => {
+  //   await AsyncStorage.removeItem('mealName');
+  // };
+
+  const onAddToMeal = async item => {
+    const foodDataByDate = await AsyncStorage.getItem('foodDataByDate');
+    const parsedFoodDataByDate = foodDataByDate
+      ? JSON.parse(foodDataByDate)
+      : {};
+
+    const itemName = item.name;
+    const final = {[itemName]: item};
+
+    const today = new Date().toISOString().slice(0, 10); // get today's date
+
+    if (parsedFoodDataByDate[today]) {
+      // If data for the current date already exists, add the new object to the array
+      parsedFoodDataByDate[today].push(final);
+    } else {
+      // If there is no data for the current date, create a new array with the new object
+      parsedFoodDataByDate[today] = [final];
+    }
+
+    await AsyncStorage.setItem(
+      'foodDataByDate',
+      JSON.stringify(parsedFoodDataByDate),
+    );
+
+    // get krwa ke dekhne ke lie
+    const foodDataByDate1 = await AsyncStorage.getItem('foodDataByDate');
+    console.log(`foodDataByDate1`);
+    console.log(foodDataByDate1);
+  };
+
+  // this if for to remove the items from the key 'foodDataByDate'
+  // const onAddToMeal = async item => {
+  //   await AsyncStorage.removeItem('foodDataByDate');
+  // };
+
   const renderItems = ({item}) => {
     console.log(`Console`);
     console.log(item);
-    const onPressAddToCart = () => {
+    const onPressAddToFavourites = () => {
       saveMealName(item);
+    };
+    const onPressAddToMeal = () => {
+      onAddToMeal(item);
     };
     return (
       <>
@@ -150,10 +193,12 @@ const SearchScreen = () => {
           <View style={styles.addToCartContainer}>
             <TouchableOpacity
               style={styles.addToCartButton}
-              onPress={onPressAddToCart}>
+              onPress={onPressAddToFavourites}>
               <Text style={styles.addToCartText}>Favorite</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.addToCartButton}>
+            <TouchableOpacity
+              style={styles.addToCartButton}
+              onPress={onPressAddToMeal}>
               <Text style={styles.addToCartText}>Add To Meal</Text>
             </TouchableOpacity>
           </View>
