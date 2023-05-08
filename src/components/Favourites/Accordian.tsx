@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
@@ -7,56 +7,36 @@ import {
   CollapseBody,
 } from 'accordion-collapse-react-native';
 
+const COLORS = {
+  black: '#000',
+  headerBackgroundWhite: '#fff',
+  nutrientTextColor: '#FF8473',
+  white: '#fff',
+};
+
 const Accordian = () => {
-  const [favourites, setFavourites] = useState();
+  const [favourites, setFavourites] = useState({});
   const getFavourites = async () => {
     const mealName = await AsyncStorage.getItem('mealName');
     const parsedJsonMealName = JSON.parse(mealName);
     setFavourites(parsedJsonMealName);
     console.log(parsedJsonMealName);
-
-    for (const key in parsedJsonMealName) {
-      if (Object.prototype.hasOwnProperty.call(parsedJsonMealName, key)) {
-        // const element = parsedJsonMealName[key];
-        return (
-          <View style={styles.container}>
-            <Collapse>
-              <CollapseHeader>
-                <View style={styles.collapseHeaderContainer}>
-                  <Text style={styles.collapseHeaderText}>{key}</Text>
-                </View>
-              </CollapseHeader>
-              <CollapseBody>
-                <View style={styles.collapseBodyContainer}>
-                  <View style={styles.nutrientDetailsContainer}>
-                    <View style={styles.nutrientDetailsRowOne}>
-                      <View style={styles.nutrientContainer}>
-                        <Text style={styles.nutrientHeading}>Calories</Text>
-                        <Text style={styles.nutrientValue}>
-                          {/* {item.calories} */}
-                          [key.calories]
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </CollapseBody>
-            </Collapse>
-          </View>
-        );
-      }
-    }
   };
+
   useEffect(() => {
     getFavourites();
   }, []);
+
+  const firstLetter = name => {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  };
   return (
     <>
-      <View style={styles.container}>
+      {Object.keys(favourites).map(key => (
         <Collapse>
           <CollapseHeader>
             <View style={styles.collapseHeaderContainer}>
-              <Text style={styles.collapseHeaderText}>1. Riceee</Text>
+              <Text style={styles.collapseHeaderText}>{firstLetter(key)}</Text>
             </View>
           </CollapseHeader>
           <CollapseBody>
@@ -66,29 +46,71 @@ const Accordian = () => {
                   <View style={styles.nutrientContainer}>
                     <Text style={styles.nutrientHeading}>Calories</Text>
                     <Text style={styles.nutrientValue}>
-                      {/* {item.calories} */}
-                      30
+                      {favourites[key].calories}
                     </Text>
                   </View>
                   <View style={styles.nutrientContainer}>
                     <Text style={styles.nutrientHeading}>Carbs (g)</Text>
                     <Text style={styles.nutrientValue}>
-                      {/* {item.carbohydrates_total_g} */}
-                      30
+                      {favourites[key].carbohydrates_total_g}
                     </Text>
                   </View>
                   <View style={styles.nutrientContainer}>
                     <Text style={styles.nutrientHeading}>Cholestrol (g)</Text>
                     <Text style={styles.nutrientValue}>
-                      {/* {item.cholesterol_mg} */}
-                      30
+                      {favourites[key].cholesterol_mg}
                     </Text>
                   </View>
                   <View style={styles.nutrientContainer}>
                     <Text style={styles.nutrientHeading}>Sat. Fat (g)</Text>
                     <Text style={styles.nutrientValue}>
-                      {/* {item.fat_saturated_g} */}
-                      30
+                      {favourites[key].fat_saturated_g}
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.nutrientDetailsRowOne}>
+                  <View style={styles.nutrientContainer}>
+                    <Text style={styles.nutrientHeading}>Fat (g)</Text>
+                    <Text style={styles.nutrientValue}>
+                      {favourites[key].fat_total_g}
+                    </Text>
+                  </View>
+                  <View style={styles.nutrientContainer}>
+                    <Text style={styles.nutrientHeading}>Fiber (g)</Text>
+                    <Text style={styles.nutrientValue}>
+                      {favourites[key].fiber_g}
+                    </Text>
+                  </View>
+                  <View style={styles.nutrientContainer}>
+                    <Text style={styles.nutrientHeading}>Potassium (mg)</Text>
+                    <Text style={styles.nutrientValue}>
+                      {favourites[key].potassium_mg}
+                    </Text>
+                  </View>
+                  <View style={styles.nutrientContainer}>
+                    <Text style={styles.nutrientHeading}>Protein (g)</Text>
+                    <Text style={styles.nutrientValue}>
+                      {favourites[key].protein_g}
+                    </Text>
+                  </View>
+                </View>
+                <View style={styles.nutrientDetailsRowOne}>
+                  <View style={styles.nutrientContainer}>
+                    <Text style={styles.nutrientHeading}>Serving Size (g)</Text>
+                    <Text style={styles.nutrientValue}>
+                      {favourites[key].serving_size_g}
+                    </Text>
+                  </View>
+                  <View style={styles.nutrientContainer}>
+                    <Text style={styles.nutrientHeading}>Sodium (mg)</Text>
+                    <Text style={styles.nutrientValue}>
+                      {favourites[key].sodium_mg}
+                    </Text>
+                  </View>
+                  <View style={styles.nutrientContainer}>
+                    <Text style={styles.nutrientHeading}>Sugar (g)</Text>
+                    <Text style={styles.nutrientValue}>
+                      {favourites[key].sugar_g}
                     </Text>
                   </View>
                 </View>
@@ -96,7 +118,7 @@ const Accordian = () => {
             </View>
           </CollapseBody>
         </Collapse>
-      </View>
+      ))}
     </>
   );
 };
@@ -104,34 +126,39 @@ const Accordian = () => {
 export default Accordian;
 
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    // backgroundColor: '#fff',
-  },
   collapseHeaderContainer: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderColor: 'black',
-    // backgroundColor: '#FFF8EE',
-    // backgroundColor: '#fef',
+    marginBottom: 15,
+    backgroundColor: '#FF9385',
+    borderRadius: 10,
   },
   collapseHeaderText: {
-    marginVertical: 12,
-    marginLeft: 35,
-    fontSize: 16,
-    // color: '#FF9385',
+    fontSize: 20,
+    padding: 15,
+    // borderWidth: 1,
+    color: COLORS.white,
+    alignSelf: 'center',
+    paddingLeft: 20,
+    // borderBottomWidth: 1,
+    // borderBottomColor: '#FFF8EE',
   },
   collapseBodyContainer: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderColor: 'black',
   },
-  collapseBodyText: {
-    borderWidth: 1,
-    borderColor: 'black',
+  mealDetailsContainer: {},
+  mealName: {
+    fontSize: 25,
+    color: 'black',
+    marginLeft: 15,
+    // backgroundColor: COLORS.nutrientTextColor,
   },
   nutrientDetailsContainer: {
     // borderWidth: 1,
     borderColor: 'black',
     marginBottom: 30,
+    // backgroundColor: COLORS.nutrientTextColor,
   },
   nutrientDetailsRowOne: {
     // borderWidth: 1,
@@ -153,12 +180,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginHorizontal: 5,
     marginVertical: 5,
-    color: '#FF8473',
+    color: COLORS.nutrientTextColor,
   },
   nutrientValue: {
     fontSize: 24,
     marginHorizontal: 15,
     marginVertical: 5,
-    color: '#FF8473',
+    color: COLORS.nutrientTextColor,
   },
 });

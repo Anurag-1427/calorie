@@ -7,13 +7,13 @@ import {
   FlatList,
   Image,
   ScrollView,
-  Pressable,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import SearchZero from './SearchZero';
 
 const COLORS = {
   white: '#fff',
@@ -114,10 +114,6 @@ const SearchScreen = () => {
               </View>
             </View>
             <View style={styles.nutrientDetailsRowOne}>
-              {/* <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Sat. Fat (g)</Text>
-                <Text style={styles.nutrientValue}>{item.fat_saturated_g}</Text>
-              </View> */}
               <View style={styles.nutrientContainer}>
                 <Text style={styles.nutrientHeading}>Fat (g)</Text>
                 <Text style={styles.nutrientValue}>{item.fat_total_g}</Text>
@@ -136,14 +132,6 @@ const SearchScreen = () => {
               </View>
             </View>
             <View style={styles.nutrientDetailsRowOne}>
-              {/* <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Potassium (mg)</Text>
-                <Text style={styles.nutrientValue}>{item.potassium_mg}</Text>
-              </View>
-              <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Protein (g)</Text>
-                <Text style={styles.nutrientValue}>{item.protein_g}</Text>
-              </View> */}
               <View style={styles.nutrientContainer}>
                 <Text style={styles.nutrientHeading}>Serving Size (g)</Text>
                 <Text style={styles.nutrientValue}>{item.serving_size_g}</Text>
@@ -156,16 +144,6 @@ const SearchScreen = () => {
                 <Text style={styles.nutrientHeading}>Sugar (g)</Text>
                 <Text style={styles.nutrientValue}>{item.sugar_g}</Text>
               </View>
-            </View>
-            <View style={styles.nutrientDetailsRowOne}>
-              {/* <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Sodium (mg)</Text>
-                <Text style={styles.nutrientValue}>{item.sodium_mg}</Text>
-              </View>
-              <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Sugar (g)</Text>
-                <Text style={styles.nutrientValue}>{item.sugar_g}</Text>
-              </View> */}
             </View>
           </View>
 
@@ -184,6 +162,7 @@ const SearchScreen = () => {
     );
   };
 
+  // console.log(data);
   return (
     <>
       <StatusBar backgroundColor="transparent" />
@@ -193,7 +172,7 @@ const SearchScreen = () => {
         </View>
         <View style={styles.textInputParentContainer}>
           <View style={styles.textInputContainer}>
-            <Ionicons name="search-outline" size={18}></Ionicons>
+            {/* <Ionicons name="search-outline" size={18}></Ionicons> */}
 
             <TextInput
               style={styles.textInput}
@@ -210,32 +189,27 @@ const SearchScreen = () => {
           </View>
         </View>
 
-        <View>
-          <View style={styles.mealImgContainer}>
-            <Image
-              style={styles.mealImg}
-              source={require(`../../assets/meal.png`)}
-            />
-            <Text
-              style={{
-                fontSize: 18,
-                alignSelf: 'center',
-                color: COLORS.blackForSearchHeading,
-              }}>
-              Your intake details
-            </Text>
+        {data?.length === 0 ? (
+          <SearchZero />
+        ) : (
+          <View>
+            <View style={styles.mealImgContainer}>
+              <Image
+                style={styles.mealImg}
+                source={require(`../../assets/meal.png`)}
+              />
+              <Text
+                style={{
+                  fontSize: 18,
+                  alignSelf: 'center',
+                  color: COLORS.blackForSearchHeading,
+                }}>
+                Your intake details
+              </Text>
+            </View>
+            <FlatList data={data} renderItem={renderItems} />
           </View>
-          <FlatList data={data} renderItem={renderItems} />
-        </View>
-        {/* <View style={styles.shoppingBasketContainer}>
-          <Image
-            style={styles.shoppingBasketImg}
-            source={require('../../assets/shopping-basket.png')}
-          />
-          <View style={styles.taglineContainer}>
-            <Text style={styles.tagline}>Search about your meal</Text>
-          </View>
-        </View> */}
+        )}
       </ScrollView>
     </>
   );
@@ -285,30 +259,6 @@ const styles = StyleSheet.create({
   },
   placeholderTextStyle: {
     paddingLeft: '19.2%',
-  },
-  shoppingBasketContainer: {
-    // borderWidth: 1,
-    borderColor: 'black',
-    alignItems: 'center',
-    width: '100%',
-    justifyContent: 'center',
-    marginVertical: 250,
-  },
-  shoppingBasketImg: {
-    tintColor: 'grey',
-    alignSelf: 'center',
-    // borderWidth: 1,
-    borderColor: 'black',
-  },
-  taglineContainer: {
-    // borderWidth: 1,
-    borderColor: 'black',
-    marginTop: 12,
-  },
-  tagline: {
-    // borderWidth: 1,
-    borderColor: 'black',
-    alignSelf: 'center',
   },
   mealImgContainer: {
     // borderWidth: 1,

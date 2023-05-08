@@ -1,10 +1,12 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Accordian from './Accordian';
 
 const COLORS = {
   headerTextBlack: '#000',
   headerBackgroundWhite: '#fff',
+  btnColorGreen: '#91C788',
+  white: '#fff',
 };
 
 const Favourites = () => {
@@ -12,10 +14,9 @@ const Favourites = () => {
     <>
       <View style={styles.favouritesContainer}>
         <View style={styles.headerContainer}>
-          <Text style={styles.headerText}>Your Favourites Meal</Text>
+          <Text style={styles.headerText}>Your Favourites Meal List</Text>
         </View>
         <Accordian />
-        {/* <Text>{favourites}</Text> */}
       </View>
     </>
   );
