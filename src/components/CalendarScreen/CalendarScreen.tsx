@@ -152,7 +152,7 @@ const CalendarScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.calendarHeadingContainer}>
         <Text style={styles.calendarHeading}>Calendar</Text>
       </View>
@@ -168,7 +168,7 @@ const CalendarScreen = () => {
           {getMealDataForDate(selectedDate)}
         </ScrollView>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
