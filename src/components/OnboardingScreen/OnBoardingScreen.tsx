@@ -10,7 +10,6 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-// import {FlatList} from 'react-native-gesture-handler';
 
 const {width, height} = Dimensions.get('window');
 
