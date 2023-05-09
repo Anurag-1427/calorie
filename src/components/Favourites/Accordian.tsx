@@ -61,12 +61,12 @@ const Accordian = () => {
                       {favourites[key].cholesterol_mg}
                     </Text>
                   </View>
-                  <View style={styles.nutrientContainer}>
+                  {/* <View style={styles.nutrientContainer}>
                     <Text style={styles.nutrientHeading}>Sat. Fat (g)</Text>
                     <Text style={styles.nutrientValue}>
                       {favourites[key].fat_saturated_g}
                     </Text>
-                  </View>
+                  </View> */}
                 </View>
                 <View style={styles.nutrientDetailsRowOne}>
                   <View style={styles.nutrientContainer}>
@@ -87,20 +87,26 @@ const Accordian = () => {
                       {favourites[key].potassium_mg}
                     </Text>
                   </View>
+                  {/* <View style={styles.nutrientContainer}>
+                    <Text style={styles.nutrientHeading}>Protein (g)</Text>
+                    <Text style={styles.nutrientValue}>
+                      {favourites[key].protein_g}
+                    </Text>
+                  </View> */}
+                </View>
+                <View style={styles.nutrientDetailsRowOne}>
                   <View style={styles.nutrientContainer}>
                     <Text style={styles.nutrientHeading}>Protein (g)</Text>
                     <Text style={styles.nutrientValue}>
                       {favourites[key].protein_g}
                     </Text>
                   </View>
-                </View>
-                <View style={styles.nutrientDetailsRowOne}>
-                  <View style={styles.nutrientContainer}>
+                  {/* <View style={styles.nutrientContainer}>
                     <Text style={styles.nutrientHeading}>Serving Size (g)</Text>
                     <Text style={styles.nutrientValue}>
                       {favourites[key].serving_size_g}
                     </Text>
-                  </View>
+                  </View> */}
                   <View style={styles.nutrientContainer}>
                     <Text style={styles.nutrientHeading}>Sodium (mg)</Text>
                     <Text style={styles.nutrientValue}>
@@ -175,16 +181,17 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     backgroundColor: '#FFF8EE',
     borderRadius: 10,
+    width: '30%',
   },
   nutrientHeading: {
     fontSize: 16,
-    marginHorizontal: 5,
+    // marginHorizontal: 5,
     marginVertical: 5,
     color: COLORS.nutrientTextColor,
   },
   nutrientValue: {
     fontSize: 24,
-    marginHorizontal: 15,
+    // marginHorizontal: 15,
     marginVertical: 5,
     color: COLORS.nutrientTextColor,
   },

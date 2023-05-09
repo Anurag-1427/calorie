@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import ProfileScreen from '../components/ProfileScreen/ProfileScreen';
+import ProfileScreen from '../components/CameraFoodScreen/CameraFoodScreen';
 import SearchScreen from '../components/SearchScreen/SearchScreen';
 import Favourites from '../components/Favourites/Favourites';
 import CalendarScreen from '../components/CalendarScreen/CalendarScreen';
@@ -61,7 +61,7 @@ const BottomTabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name="Camera"
         component={ProfileScreen}
         options={{
           headerShown: false,

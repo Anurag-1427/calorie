@@ -78,12 +78,12 @@ const CalendarScreen = () => {
                       {meal[foodName].cholesterol_mg}
                     </Text>
                   </View>
-                  <View style={styles.nutrientContainer}>
+                  {/* <View style={styles.nutrientContainer}>
                     <Text style={styles.nutrientHeading}>Sat. Fat (g)</Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].fat_saturated_g}
                     </Text>
-                  </View>
+                  </View> */}
                 </View>
                 <View style={styles.nutrientDetailsRowOne}>
                   <View style={styles.nutrientContainer}>
@@ -104,20 +104,26 @@ const CalendarScreen = () => {
                       {meal[foodName].potassium_mg}
                     </Text>
                   </View>
+                  {/* <View style={styles.nutrientContainer}>
+                    <Text style={styles.nutrientHeading}>Protein (g)</Text>
+                    <Text style={styles.nutrientValue}>
+                      {meal[foodName].protein_g}
+                    </Text>
+                  </View> */}
+                </View>
+                <View style={styles.nutrientDetailsRowOne}>
                   <View style={styles.nutrientContainer}>
                     <Text style={styles.nutrientHeading}>Protein (g)</Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].protein_g}
                     </Text>
                   </View>
-                </View>
-                <View style={styles.nutrientDetailsRowOne}>
-                  <View style={styles.nutrientContainer}>
+                  {/* <View style={styles.nutrientContainer}>
                     <Text style={styles.nutrientHeading}>Serving Size (g)</Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].serving_size_g}
                     </Text>
-                  </View>
+                  </View> */}
                   <View style={styles.nutrientContainer}>
                     <Text style={styles.nutrientHeading}>Sodium (mg)</Text>
                     <Text style={styles.nutrientValue}>
@@ -226,16 +232,17 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     backgroundColor: '#FFF8EE',
     borderRadius: 10,
+    width: '30%',
   },
   nutrientHeading: {
     fontSize: 16,
-    marginHorizontal: 5,
+    // marginHorizontal: 5,
     marginVertical: 5,
     color: '#FF8473',
   },
   nutrientValue: {
     fontSize: 24,
-    marginHorizontal: 15,
+    // marginHorizontal: 15,
     marginVertical: 5,
     color: '#FF8473',
   },

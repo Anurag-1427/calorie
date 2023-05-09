@@ -151,10 +151,10 @@ const SearchScreen = () => {
                 <Text style={styles.nutrientHeading}>Cholestrol (g)</Text>
                 <Text style={styles.nutrientValue}>{item.cholesterol_mg}</Text>
               </View>
-              <View style={styles.nutrientContainer}>
+              {/* <View style={styles.nutrientContainer}>
                 <Text style={styles.nutrientHeading}>Sat. Fat (g)</Text>
                 <Text style={styles.nutrientValue}>{item.fat_saturated_g}</Text>
-              </View>
+              </View> */}
             </View>
             <View style={styles.nutrientDetailsRowOne}>
               <View style={styles.nutrientContainer}>
@@ -169,16 +169,20 @@ const SearchScreen = () => {
                 <Text style={styles.nutrientHeading}>Potassium (mg)</Text>
                 <Text style={styles.nutrientValue}>{item.potassium_mg}</Text>
               </View>
+              {/* <View style={styles.nutrientContainer}>
+                <Text style={styles.nutrientHeading}>Protein (g)</Text>
+                <Text style={styles.nutrientValue}>{item.protein_g}</Text>
+              </View> */}
+            </View>
+            <View style={styles.nutrientDetailsRowOne}>
               <View style={styles.nutrientContainer}>
                 <Text style={styles.nutrientHeading}>Protein (g)</Text>
                 <Text style={styles.nutrientValue}>{item.protein_g}</Text>
               </View>
-            </View>
-            <View style={styles.nutrientDetailsRowOne}>
-              <View style={styles.nutrientContainer}>
+              {/* <View style={styles.nutrientContainer}>
                 <Text style={styles.nutrientHeading}>Serving Size (g)</Text>
                 <Text style={styles.nutrientValue}>{item.serving_size_g}</Text>
-              </View>
+              </View> */}
               <View style={styles.nutrientContainer}>
                 <Text style={styles.nutrientHeading}>Sodium (mg)</Text>
                 <Text style={styles.nutrientValue}>{item.sodium_mg}</Text>
@@ -199,7 +203,7 @@ const SearchScreen = () => {
             <TouchableOpacity
               style={styles.addToCartButton}
               onPress={onPressAddToMeal}>
-              <Text style={styles.addToCartText}>Add To Meal</Text>
+              <Text style={styles.addToCartText}>Add Meal</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -348,19 +352,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1,
     borderColor: '#FFF8EE',
-    marginVertical: 10,
+    marginVertical: 7,
     backgroundColor: '#FFF8EE',
     borderRadius: 10,
+    width: '30%',
   },
   nutrientHeading: {
     fontSize: 16,
-    marginHorizontal: 5,
+    // marginHorizontal: 5,
     marginVertical: 5,
     color: '#FF8473',
   },
   nutrientValue: {
     fontSize: 24,
-    marginHorizontal: 15,
+    // marginHorizontal: 15,
     marginVertical: 5,
     color: '#FF8473',
   },
@@ -377,6 +382,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLORS.addToCartGreen,
+    // borderWidth: 1,
     borderRadius: 24,
   },
   addToCartText: {
