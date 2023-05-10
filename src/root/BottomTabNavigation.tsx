@@ -1,7 +1,7 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import ProfileScreen from '../components/CameraFoodScreen/CameraFoodScreen';
+import CameraFoodScreen from '../components/CameraFoodScreen/CameraFoodScreen';
 import SearchScreen from '../components/SearchScreen/SearchScreen';
 import Favourites from '../components/Favourites/Favourites';
 import CalendarScreen from '../components/CalendarScreen/CalendarScreen';
@@ -62,9 +62,15 @@ const BottomTabNavigation = () => {
       />
       <Tab.Screen
         name="Camera"
-        component={ProfileScreen}
+        component={CameraFoodScreen}
         options={{
           headerShown: false,
+          tabBarIcon: ({focused}) =>
+            focused ? (
+              <Ionicons name="camera" size={25} color={COLORS.splashGreen} />
+            ) : (
+              <Ionicons name="camera-outline" size={25} />
+            ),
         }}
       />
     </Tab.Navigator>
