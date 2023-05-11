@@ -2,6 +2,7 @@ import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Calendar} from 'react-native-calendars';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const COLORS = {
   white: '#fff',
@@ -152,23 +153,77 @@ const CalendarScreen = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.calendarHeadingContainer}>
-        <Text style={styles.calendarHeading}>Calendar</Text>
-      </View>
-      <Calendar
-        onDayPress={onDayPress}
-        markedDates={{[selectedDate]: {selected: true}}}
-      />
+    // <ScrollView style={styles.container}>
+    //   <View style={styles.calendarHeadingContainer}>
+    //     <Text style={styles.calendarHeading}>Calendar</Text>
+    //   </View>
+    // <Calendar
+    //   onDayPress={onDayPress}
+    //   markedDates={{[selectedDate]: {selected: true}}}
+    // />
 
-      <View style={styles.mealDataContainer}>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={styles.container}>
-          {getMealDataForDate(selectedDate)}
+    //   <View style={styles.mealDataContainer}>
+    //     <ScrollView
+    //       showsVerticalScrollIndicator={false}
+    //       style={styles.container}>
+    //       {getMealDataForDate(selectedDate)}
+    //     </ScrollView>
+    //   </View>
+    // </ScrollView>
+
+    // <View style={styles.container}>
+    //   <View style={styles.calendarHeadingContainer}>
+    //     <Text style={styles.calendarHeading}>Calendar</Text>
+    //   </View>
+    //   <Calendar
+    //     onDayPress={onDayPress}
+    //     markedDates={{[selectedDate]: {selected: true}}}
+    //   />
+    //   <View style={styles.noDataInCalendarContainer}>
+    //     <View style={styles.iconAndTextContainer}>
+    //       <Ionicons name="calendar-outline" size={80}></Ionicons>
+    //       <Text>You have no favourites</Text>
+    //     </View>
+    //   </View>
+    // </View>
+    <>
+      {/* {Object.keys(mealDataByDate || {}) ? ( */}
+      {mealDataByDate ? (
+        <ScrollView style={styles.container}>
+          <View style={styles.calendarHeadingContainer}>
+            <Text style={styles.calendarHeading}>Calendar</Text>
+          </View>
+          <Calendar
+            onDayPress={onDayPress}
+            markedDates={{[selectedDate]: {selected: true}}}
+          />
+
+          <View style={styles.mealDataContainer}>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              style={styles.container}>
+              {getMealDataForDate(selectedDate)}
+            </ScrollView>
+          </View>
         </ScrollView>
-      </View>
-    </ScrollView>
+      ) : (
+        <View style={styles.container}>
+          <View style={styles.calendarHeadingContainer}>
+            <Text style={styles.calendarHeading}>Calendar</Text>
+          </View>
+          <Calendar
+          // onDayPress={onDayPress}
+          // markedDates={{[selectedDate]: {selected: true}}}
+          />
+          <View style={styles.noDataInCalendarContainer}>
+            <View style={styles.iconAndTextContainer}>
+              <Ionicons name="calendar-outline" size={80}></Ionicons>
+              <Text>You have no data in calendar</Text>
+            </View>
+          </View>
+        </View>
+      )}
+    </>
   );
 };
 
@@ -245,5 +300,17 @@ const styles = StyleSheet.create({
     // marginHorizontal: 15,
     marginVertical: 5,
     color: '#FF8473',
+  },
+  noDataInCalendarContainer: {
+    // borderWidth: 1,
+    borderColor: 'black',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  iconAndTextContainer: {
+    // borderWidth: 1,
+    borderColor: 'black',
+    alignItems: 'center',
   },
 });
