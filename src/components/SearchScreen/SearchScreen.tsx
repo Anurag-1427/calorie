@@ -25,10 +25,12 @@ const COLORS = {
 };
 
 const SearchScreen = () => {
+  // All the states are here
   const [data, setData] = useState([]);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // All the functions are here
   const searchResult = () => {
     setLoading(true);
     const options = {
