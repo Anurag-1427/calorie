@@ -1,5 +1,5 @@
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import {View, Text, StyleSheet, ScrollView, RefreshControl} from 'react-native';
+import React, {useCallback, useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   Collapse,
@@ -16,6 +16,17 @@ const COLORS = {
 };
 
 const Accordian = () => {
+  // This state leads to refresh the screen
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+      getFavourites();
+    }, 2000);
+  }, []);
+
   const [favourites, setFavourites] = useState({});
   const getFavourites = async () => {
     const mealName = await AsyncStorage.getItem('mealName');
@@ -32,14 +43,17 @@ const Accordian = () => {
     return name.charAt(0).toUpperCase() + name.slice(1);
   };
   return (
-    <>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       {/* {Object.keys(favourites) ? ( */}
       {favourites ? (
         <>
           {Object.keys(favourites).map(key => (
             <Collapse>
               <CollapseHeader>
-                <View style={styles.collapseHeaderContainer}>
+                <View key={key} style={styles.collapseHeaderContainer}>
                   <Text style={styles.collapseHeaderText}>
                     {firstLetter(key)}
                   </Text>
@@ -144,7 +158,7 @@ const Accordian = () => {
           </View>
         </View>
       )}
-    </>
+    </ScrollView>
   );
 };
 

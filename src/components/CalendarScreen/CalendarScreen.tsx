@@ -1,5 +1,5 @@
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import {View, Text, StyleSheet, ScrollView, RefreshControl} from 'react-native';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Calendar} from 'react-native-calendars';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -10,6 +10,17 @@ const COLORS = {
 };
 
 const CalendarScreen = () => {
+  // This state leads to refresh the screen
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+      getDataByDate();
+    }, 2000);
+  }, []);
+
   // All the states are here
   const [selectedDate, setSelectedDate] = useState('');
   const [mealDataByDate, setMealDataByDate] = useState([]);
@@ -145,48 +156,25 @@ const CalendarScreen = () => {
       });
     } else {
       return (
-        <View style={{alignItems: 'center', marginTop: 150}}>
+        <View
+          style={{
+            alignItems: 'center',
+            marginTop: 150,
+            // borderWidth: 1,
+          }}>
           <Text>No meal data</Text>
+          <Text>(Choose the date wisely)</Text>
         </View>
       );
     }
   };
 
   return (
-    // <ScrollView style={styles.container}>
-    //   <View style={styles.calendarHeadingContainer}>
-    //     <Text style={styles.calendarHeading}>Calendar</Text>
-    //   </View>
-    // <Calendar
-    //   onDayPress={onDayPress}
-    //   markedDates={{[selectedDate]: {selected: true}}}
-    // />
-
-    //   <View style={styles.mealDataContainer}>
-    //     <ScrollView
-    //       showsVerticalScrollIndicator={false}
-    //       style={styles.container}>
-    //       {getMealDataForDate(selectedDate)}
-    //     </ScrollView>
-    //   </View>
-    // </ScrollView>
-
-    // <View style={styles.container}>
-    //   <View style={styles.calendarHeadingContainer}>
-    //     <Text style={styles.calendarHeading}>Calendar</Text>
-    //   </View>
-    //   <Calendar
-    //     onDayPress={onDayPress}
-    //     markedDates={{[selectedDate]: {selected: true}}}
-    //   />
-    //   <View style={styles.noDataInCalendarContainer}>
-    //     <View style={styles.iconAndTextContainer}>
-    //       <Ionicons name="calendar-outline" size={80}></Ionicons>
-    //       <Text>You have no favourites</Text>
-    //     </View>
-    //   </View>
-    // </View>
-    <>
+    <ScrollView
+      style={{backgroundColor: 'white'}}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }>
       {/* {Object.keys(mealDataByDate || {}) ? ( */}
       {mealDataByDate ? (
         <ScrollView style={styles.container}>
@@ -211,19 +199,17 @@ const CalendarScreen = () => {
           <View style={styles.calendarHeadingContainer}>
             <Text style={styles.calendarHeading}>Calendar</Text>
           </View>
-          <Calendar
-          // onDayPress={onDayPress}
-          // markedDates={{[selectedDate]: {selected: true}}}
-          />
+          <Calendar />
           <View style={styles.noDataInCalendarContainer}>
             <View style={styles.iconAndTextContainer}>
               <Ionicons name="calendar-outline" size={80}></Ionicons>
               <Text>You have no data in calendar</Text>
+              <Text>Kindly refresh for updated data</Text>
             </View>
           </View>
         </View>
       )}
-    </>
+    </ScrollView>
   );
 };
 
@@ -306,6 +292,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 100,
     flex: 1,
   },
   iconAndTextContainer: {
