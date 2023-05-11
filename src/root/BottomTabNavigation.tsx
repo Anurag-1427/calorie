@@ -14,7 +14,16 @@ const Tab = createBottomTabNavigator();
 
 const BottomTabNavigation = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        // labelStyle: {
+        //   fontSize: 12,
+        //   color: COLORS.splashGreen,
+        // },
+        activeTintColor: COLORS.splashGreen,
+        inactiveTintColor: 'grey',
+      }}>
+      {/* screenOptions={{tabBarShowLabel: false}}*/}
       <Tab.Screen
         name="Search"
         component={SearchScreen}
@@ -24,7 +33,7 @@ const BottomTabNavigation = () => {
             focused ? (
               <Ionicons
                 name="search"
-                size={25}
+                size={30}
                 color={COLORS.splashGreen}></Ionicons>
             ) : (
               <Ionicons name="search-outline" size={25}></Ionicons>
@@ -40,7 +49,7 @@ const BottomTabNavigation = () => {
             focused ? (
               <Ionicons
                 name="bookmark"
-                size={25}
+                size={30}
                 color={COLORS.splashGreen}></Ionicons>
             ) : (
               <Ionicons name="bookmark-outline" size={25}></Ionicons>
@@ -54,7 +63,7 @@ const BottomTabNavigation = () => {
           headerShown: false,
           tabBarIcon: ({focused}) =>
             focused ? (
-              <Ionicons name="calendar" size={25} color={COLORS.splashGreen} />
+              <Ionicons name="calendar" size={30} color={COLORS.splashGreen} />
             ) : (
               <Ionicons name="calendar-outline" size={25} />
             ),
@@ -67,7 +76,7 @@ const BottomTabNavigation = () => {
           headerShown: false,
           tabBarIcon: ({focused}) =>
             focused ? (
-              <Ionicons name="camera" size={25} color={COLORS.splashGreen} />
+              <Ionicons name="camera" size={30} color={COLORS.splashGreen} />
             ) : (
               <Ionicons name="camera-outline" size={25} />
             ),
