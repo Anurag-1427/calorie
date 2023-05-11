@@ -15,13 +15,13 @@ const Tab = createBottomTabNavigator();
 const BottomTabNavigation = () => {
   return (
     <Tab.Navigator
-      tabBarOptions={{
+      screenOptions={{
         // labelStyle: {
         //   fontSize: 12,
         //   color: COLORS.splashGreen,
         // },
-        activeTintColor: COLORS.splashGreen,
-        inactiveTintColor: 'grey',
+        tabBarActiveTintColor: COLORS.splashGreen,
+        tabBarInactiveTintColor: 'grey',
       }}>
       {/* screenOptions={{tabBarShowLabel: false}}*/}
       <Tab.Screen
