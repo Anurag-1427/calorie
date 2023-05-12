@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import {Camera, useCameraDevices} from 'react-native-vision-camera';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const CameraFoodScreen = () => {
   const [imageData, setImageData] = useState(``);
@@ -65,14 +66,33 @@ const CameraFoodScreen = () => {
           {imageData !== '' && (
             <Image source={{uri: 'file://' + imageData}} style={styles.image} />
           )}
-
-          <TouchableOpacity
-            style={styles.btn}
-            onPress={() => {
-              setTakePhotoClicked(true);
-            }}>
-            <Text style={styles.btnText}>Click Photo</Text>
-          </TouchableOpacity>
+          {imageData !== '' ? (
+            <View style={styles.clickPhotoAndBtn}>
+              <TouchableOpacity
+                style={styles.btn}
+                onPress={() => {
+                  setTakePhotoClicked(true);
+                }}>
+                <Text style={styles.btnText}>Click Photo</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.sendBtnContainer}>
+                <Ionicons
+                  name="send-outline"
+                  size={25}
+                  style={{transform: [{rotateZ: '-20deg'}]}}></Ionicons>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <View style={styles.clickPhotoAndBtn}>
+              <TouchableOpacity
+                style={[styles.btn, {alignSelf: 'center'}]}
+                onPress={() => {
+                  setTakePhotoClicked(true);
+                }}>
+                <Text style={styles.btnText}>Click Photo</Text>
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       )}
     </View>
@@ -112,12 +132,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    // borderWidth: 1,
+    borderColor: 'black',
   },
   image: {
     width: '90%',
     height: '80%',
     marginBottom: 15,
     borderRadius: 20,
+  },
+  clickPhotoAndBtn: {
+    // borderWidth: 1,
+    borderColor: 'blue',
+    width: '100%',
+    flexDirection: 'row',
+    // alignItems: 'center',
+    justifyContent: 'center',
   },
   btn: {
     height: 72,
@@ -126,6 +156,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#91C788',
     justifyContent: 'center',
     alignItems: 'center',
+    // borderWidth: 1,
+    borderColor: 'black',
   },
-  btnText: {fontWeight: 'bold', fontSize: 15, color: 'white'},
+  btnText: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: 'white',
+  },
+  sendBtnContainer: {
+    // borderWidth: 1,
+    borderColor: 'black',
+    height: 72,
+    marginLeft: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
