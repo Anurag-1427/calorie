@@ -9,10 +9,12 @@ import {
 import React, {useState, useEffect, useRef} from 'react';
 import {Camera, useCameraDevices} from 'react-native-vision-camera';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import axios from 'axios';
 
 const CameraFoodScreen = () => {
   const [imageData, setImageData] = useState(``);
   const [takePhotoClicked, setTakePhotoClicked] = useState(false);
+  const [data, setData] = useState({});
 
   const devices = useCameraDevices();
   const device = devices.back;
@@ -39,7 +41,38 @@ const CameraFoodScreen = () => {
     }
   };
 
+  const apiUrl = 'https://api.calorieninjas.com/v1/imagetextnutrition';
+  const searchResult = async () => {
+    const formData = new FormData();
+    formData.append('image', {
+      uri: 'file://' + imageData,
+      type: 'image/jpeg',
+      name: 'image.jpg',
+    });
+
+    try {
+      const response = await axios.post(apiUrl, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'X-Api-Key': '5Dre5zEq8tpfSZi97CGHTQ==k4gRsVuaQ4XuC0DI',
+          enctype: 'multipart/form-data',
+          processData: false,
+          contentType: false,
+        },
+      });
+      console.log('Image uploaded successfully!');
+      console.log('Server response:', response.data);
+      setData(response.data);
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
+  };
+
   if (device == null) return <ActivityIndicator />;
+
+  console.log(data);
+  console.log('data?.items');
+  console.log(data?.items);
   return (
     <View style={{flex: 1}}>
       {takePhotoClicked ? (
@@ -69,13 +102,15 @@ const CameraFoodScreen = () => {
           {imageData !== '' ? (
             <View style={styles.clickPhotoAndBtn}>
               <TouchableOpacity
-                style={styles.btn}
+                style={[styles.btn, {width: '80%'}]}
                 onPress={() => {
                   setTakePhotoClicked(true);
                 }}>
                 <Text style={styles.btnText}>Click Photo</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.sendBtnContainer}>
+              <TouchableOpacity
+                style={styles.sendBtnContainer}
+                onPress={searchResult}>
                 <Ionicons
                   name="send-outline"
                   size={25}
