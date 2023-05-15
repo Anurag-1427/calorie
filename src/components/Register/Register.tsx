@@ -14,12 +14,11 @@ const COLORS = {
   loginBtnColor: '#FF9385',
 };
 
-const Login = () => {
+const Register = () => {
   const forOpacity =
     emailCheck && passwordCheck
       ? styles.forOpacityEnabled
       : styles.forOpacityDisabled;
-
   // All the states are here
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,13 +44,13 @@ const Login = () => {
 
   // Navigation
   const navigator = useNavigation();
-  const registerBtn = () => {
-    navigator.navigate('Register');
+  const logInBtn = () => {
+    navigator.navigate('Login');
   };
   return (
     <View style={styles.container}>
       <View style={styles.headingContainer}>
-        <Text style={styles.heading}>Login</Text>
+        <Text style={styles.heading}>Register</Text>
       </View>
       {/* This below is for email input */}
       <View style={styles.inputParentContainer}>
@@ -100,26 +99,19 @@ const Login = () => {
         </View>
       </View>
 
-      {/* This below is for forgot password text */}
-      <View style={styles.forgotPasswordContainer}>
-        <TouchableOpacity>
-          <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Login Button */}
-      <View style={styles.loginBtnAndDontHaveAccountContainer}>
-        <View style={styles.loginBtnContainer}>
-          <TouchableOpacity style={[styles.loginBtn, forOpacity]}>
-            <Text style={styles.loginBtnText}>Login</Text>
+      {/* Register Button */}
+      <View style={styles.registerBtnAndAlreadyHaveAccountContainer}>
+        <View style={styles.registerBtnContainer}>
+          <TouchableOpacity style={[styles.registerBtn, forOpacity]}>
+            <Text style={styles.registerBtnText}>Register</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.dontHaveAccountContainer}>
-          <Text style={styles.dontHaveAccountText}>Don't Have An Account?</Text>
-          <TouchableOpacity
-            style={styles.signUpBtnContainer}
-            onPress={registerBtn}>
-            <Text style={styles.signUpBtnText}>Sign Up</Text>
+        <View style={styles.alreadyHaveAccountContainer}>
+          <Text style={styles.alreadyHaveAccountText}>
+            Already Have An Account?
+          </Text>
+          <TouchableOpacity style={styles.logInBtnContainer} onPress={logInBtn}>
+            <Text style={styles.logInBtnText}>Log In</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -127,7 +119,7 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
 
 const styles = StyleSheet.create({
   container: {
@@ -203,18 +195,18 @@ const styles = StyleSheet.create({
     marginRight: 12,
     color: COLORS.green,
   },
-  loginBtnAndDontHaveAccountContainer: {
+  registerBtnAndAlreadyHaveAccountContainer: {
     // borderWidth: 1,
     borderColor: 'black',
     width: '85%',
     position: 'absolute',
     bottom: 80,
   },
-  loginBtnContainer: {
+  registerBtnContainer: {
     // borderWidth: 1,
     borderColor: 'black',
   },
-  loginBtn: {
+  registerBtn: {
     // borderWidth: 1,
     borderColor: 'black',
     alignItems: 'center',
@@ -223,13 +215,13 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     backgroundColor: COLORS.loginBtnColor,
   },
-  loginBtnText: {
+  registerBtnText: {
     // borderWidth: 1,
     borderColor: 'black',
     fontSize: 24,
     color: 'white',
   },
-  dontHaveAccountContainer: {
+  alreadyHaveAccountContainer: {
     // borderWidth: 1,
     borderColor: 'black',
     flexDirection: 'row',
@@ -237,17 +229,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 12,
   },
-  dontHaveAccountText: {
+  alreadyHaveAccountText: {
     // borderWidth: 1,
     borderColor: 'black',
     fontSize: 13,
   },
-  signUpBtnContainer: {
+  logInBtnContainer: {
     // borderWidth: 1,
     borderColor: 'black',
     marginLeft: 5,
   },
-  signUpBtnText: {
+  logInBtnText: {
     // borderWidth: 1,
     borderColor: 'black',
     color: COLORS.green,
