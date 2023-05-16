@@ -6,6 +6,7 @@ import SearchScreen from '../components/SearchScreen/SearchScreen';
 import Favourites from '../components/Favourites/Favourites';
 import CalendarScreen from '../components/CalendarScreen/CalendarScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import ProfileScreen from '../components/ProfileScreen/ProfileScreen';
 
 const COLORS = {
   splashGreen: '#91C788',
@@ -79,6 +80,19 @@ const BottomTabNavigation = () => {
               <Ionicons name="camera" size={30} color={COLORS.splashGreen} />
             ) : (
               <Ionicons name="camera-outline" size={25} />
+            ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused}) =>
+            focused ? (
+              <Ionicons name="person" size={30} color={COLORS.splashGreen} />
+            ) : (
+              <Ionicons name="person-outline" size={25} />
             ),
         }}
       />
