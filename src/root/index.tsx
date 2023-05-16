@@ -10,6 +10,8 @@ import SplashScreen from '../components/SplashScreen/SplashScreen';
 // import OnBoardingScreen from '../components/OnboardingScreen/OnBoardingScreen';
 import OnBoardScreen from '../components/OnboardingScreen/OnBoardScreen';
 import BottomTabNavigation from './BottomTabNavigation';
+import Register from '../components/Register/Register';
+import Login from '../components/Login/Login';
 
 const index = () => {
   // Stack for navigation purposes
@@ -60,6 +62,16 @@ const index = () => {
               options={{headerShown: false}}
             />
           )}
+          <Stack.Screen
+            name="Register"
+            component={Register}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{headerShown: false}}
+          />
           <Stack.Screen
             name="BottomTabNavigation"
             component={BottomTabNavigation}

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "636624154639",
+    "project_id": "calorie-21e95",
+    "storage_bucket": "calorie-21e95.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636624154639:android:b4154af7f6b1468dceb37a",
+        "android_client_info": {
+          "package_name": "com.calorie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636624154639-30okoud9k5heual2oj2tdf17j91pnn72.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.calorie",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "636624154639-a3jcfjvlq7hbrhjagslu9j0i4l3cg35h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIrRFdxNkmgM5EHaJrAnicFfkCARvS7YU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636624154639-a3jcfjvlq7hbrhjagslu9j0i4l3cg35h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -8,6 +8,7 @@ import {
 import React, {useRef, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 
 const COLORS = {
   green: '#91C788',
@@ -15,15 +16,14 @@ const COLORS = {
 };
 
 const Register = () => {
-  const forOpacity =
-    emailCheck && passwordCheck
-      ? styles.forOpacityEnabled
-      : styles.forOpacityDisabled;
   // All the states are here
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [eyeImage, setEyeImage] = useState('eye-outline');
+
+  // Navigation hooks
+  const navigator = useNavigation();
 
   // All the refs are here
   const passwordRef = useRef();
@@ -36,14 +36,34 @@ const Register = () => {
   const emailCheck = email.length > 0 && emailRegEx.test(email);
   const passwordCheck = password.length > 0 && passwordRegEx.test(password);
 
+  const forOpacity =
+    emailCheck && passwordCheck
+      ? styles.forOpacityEnabled
+      : styles.forOpacityDisabled;
+
   // All the functions are here
   const toggleSecureTextEntry = () => {
     setSecureTextEntry(!secureTextEntry);
     setEyeImage(secureTextEntry ? 'eye-off-outline' : 'eye-outline');
   };
 
+  const handleRegister = async () => {
+    try {
+      console.log('Hello');
+      console.log(`Email: `, email);
+      console.log(`Password: `, password);
+
+      const isUserCreated = await auth().createUserWithEmailAndPassword(
+        email,
+        password,
+      );
+
+      console.log(isUserCreated);
+      navigator.navigate('Login');
+    } catch (error) {}
+  };
+
   // Navigation
-  const navigator = useNavigation();
   const logInBtn = () => {
     navigator.navigate('Login');
   };
@@ -102,7 +122,9 @@ const Register = () => {
       {/* Register Button */}
       <View style={styles.registerBtnAndAlreadyHaveAccountContainer}>
         <View style={styles.registerBtnContainer}>
-          <TouchableOpacity style={[styles.registerBtn, forOpacity]}>
+          <TouchableOpacity
+            style={[styles.registerBtn, forOpacity]}
+            onPress={handleRegister}>
             <Text style={styles.registerBtnText}>Register</Text>
           </TouchableOpacity>
         </View>

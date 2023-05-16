@@ -8,6 +8,7 @@ import {
 import React, {useRef, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
 
 const COLORS = {
   green: '#91C788',
@@ -15,16 +16,14 @@ const COLORS = {
 };
 
 const Login = () => {
-  const forOpacity =
-    emailCheck && passwordCheck
-      ? styles.forOpacityEnabled
-      : styles.forOpacityDisabled;
-
   // All the states are here
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [eyeImage, setEyeImage] = useState('eye-outline');
+
+  // Navigation hooks
+  const navigator = useNavigation();
 
   // All the refs are here
   const passwordRef = useRef();
@@ -36,6 +35,10 @@ const Login = () => {
   // Checkers
   const emailCheck = email.length > 0 && emailRegEx.test(email);
   const passwordCheck = password.length > 0 && passwordRegEx.test(password);
+  const forOpacity =
+    emailCheck && passwordCheck
+      ? styles.forOpacityEnabled
+      : styles.forOpacityDisabled;
 
   // All the functions are here
   const toggleSecureTextEntry = () => {
@@ -43,8 +46,23 @@ const Login = () => {
     setEyeImage(secureTextEntry ? 'eye-off-outline' : 'eye-outline');
   };
 
+  const loginHandler = async () => {
+    try {
+      console.log(`Email: `, email);
+      console.log(`Password: `, password);
+
+      const isUserLogin = await auth().signInWithEmailAndPassword(
+        email,
+        password,
+      );
+      console.log(isUserLogin);
+      navigator.navigate('BottomTabNavigation');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // Navigation
-  const navigator = useNavigation();
   const registerBtn = () => {
     navigator.navigate('Register');
   };
@@ -68,7 +86,7 @@ const Login = () => {
               keyboardType="email-address"
               returnKeyType="next"
               // onChangeText={setQuery}
-              onChangeText={setEmail}
+              onChangeText={value => setEmail(value)}
               value={email}
               onSubmitEditing={() => passwordRef.current.focus()}></TextInput>
           </View>
@@ -88,7 +106,7 @@ const Login = () => {
               placeholder="Your Password"
               secureTextEntry={secureTextEntry}
               ref={passwordRef}
-              onChangeText={setPassword}
+              onChangeText={value => setPassword(value)}
               value={password}></TextInput>
             <TouchableOpacity onPress={toggleSecureTextEntry}>
               <Ionicons
@@ -110,7 +128,9 @@ const Login = () => {
       {/* Login Button */}
       <View style={styles.loginBtnAndDontHaveAccountContainer}>
         <View style={styles.loginBtnContainer}>
-          <TouchableOpacity style={[styles.loginBtn, forOpacity]}>
+          <TouchableOpacity
+            style={[styles.loginBtn, forOpacity]}
+            onPress={loginHandler}>
             <Text style={styles.loginBtnText}>Login</Text>
           </TouchableOpacity>
         </View>
