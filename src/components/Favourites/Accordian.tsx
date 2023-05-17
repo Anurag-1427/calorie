@@ -63,7 +63,11 @@ const Accordian = () => {
                 <View style={styles.collapseBodyContainer}>
                   <View style={styles.nutrientDetailsContainer}>
                     <View style={styles.nutrientDetailsRowOne}>
-                      <View style={styles.nutrientContainer}>
+                      <View
+                        style={[
+                          styles.nutrientContainer,
+                          {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
+                        ]}>
                         <Text style={styles.nutrientHeading}>Calories</Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].calories}
@@ -75,23 +79,32 @@ const Accordian = () => {
                           {favourites[key].carbohydrates_total_g}
                         </Text>
                       </View>
-                      <View style={styles.nutrientContainer}>
+                      <View
+                        style={[
+                          styles.nutrientContainer,
+                          {
+                            borderTopRightRadius: 24,
+                            borderBottomRightRadius: 24,
+                          },
+                        ]}>
                         <Text style={styles.nutrientHeading}>
-                          Cholestrol (g)
+                          Cholestrol (mg)
                         </Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].cholesterol_mg}
                         </Text>
                       </View>
                       {/* <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Sat. Fat (g)</Text>
-                    <Text style={styles.nutrientValue}>
-                      {favourites[key].fat_saturated_g}
-                    </Text>
-                  </View> */}
+                <Text style={styles.nutrientHeading}>Sat. Fat (g)</Text>
+                <Text style={styles.nutrientValue}>{item.fat_saturated_g}</Text>
+              </View> */}
                     </View>
                     <View style={styles.nutrientDetailsRowOne}>
-                      <View style={styles.nutrientContainer}>
+                      <View
+                        style={[
+                          styles.nutrientContainer,
+                          {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
+                        ]}>
                         <Text style={styles.nutrientHeading}>Fat (g)</Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].fat_total_g}
@@ -103,7 +116,14 @@ const Accordian = () => {
                           {favourites[key].fiber_g}
                         </Text>
                       </View>
-                      <View style={styles.nutrientContainer}>
+                      <View
+                        style={[
+                          styles.nutrientContainer,
+                          {
+                            borderTopRightRadius: 24,
+                            borderBottomRightRadius: 24,
+                          },
+                        ]}>
                         <Text style={styles.nutrientHeading}>
                           Potassium (mg)
                         </Text>
@@ -112,32 +132,39 @@ const Accordian = () => {
                         </Text>
                       </View>
                       {/* <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Protein (g)</Text>
-                    <Text style={styles.nutrientValue}>
-                      {favourites[key].protein_g}
-                    </Text>
-                  </View> */}
+                <Text style={styles.nutrientHeading}>Protein (g)</Text>
+                <Text style={styles.nutrientValue}>{item.protein_g}</Text>
+              </View> */}
                     </View>
                     <View style={styles.nutrientDetailsRowOne}>
-                      <View style={styles.nutrientContainer}>
+                      <View
+                        style={[
+                          styles.nutrientContainer,
+                          {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
+                        ]}>
                         <Text style={styles.nutrientHeading}>Protein (g)</Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].protein_g}
                         </Text>
                       </View>
                       {/* <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Serving Size (g)</Text>
-                    <Text style={styles.nutrientValue}>
-                      {favourites[key].serving_size_g}
-                    </Text>
-                  </View> */}
+                <Text style={styles.nutrientHeading}>Serving Size (g)</Text>
+                <Text style={styles.nutrientValue}>{item.serving_size_g}</Text>
+              </View> */}
                       <View style={styles.nutrientContainer}>
                         <Text style={styles.nutrientHeading}>Sodium (mg)</Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].sodium_mg}
                         </Text>
                       </View>
-                      <View style={styles.nutrientContainer}>
+                      <View
+                        style={[
+                          styles.nutrientContainer,
+                          {
+                            borderTopRightRadius: 24,
+                            borderBottomRightRadius: 24,
+                          },
+                        ]}>
                         <Text style={styles.nutrientHeading}>Sugar (g)</Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].sugar_g}
@@ -198,37 +225,41 @@ const styles = StyleSheet.create({
   nutrientDetailsContainer: {
     // borderWidth: 1,
     borderColor: 'black',
-    marginBottom: 30,
-    // backgroundColor: COLORS.nutrientTextColor,
+    marginVertical: 10,
   },
   nutrientDetailsRowOne: {
     // borderWidth: 1,
-    borderColor: 'black',
+    borderColor: 'blue',
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    marginVertical: 5,
+    alignSelf: 'center',
+    // width: '100%',
+    borderRadius: 24,
   },
   nutrientContainer: {
+    // borderWidth: 1,
+    borderColor: 'black', // for design evalutaion
     alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#FFF8EE',
-    marginVertical: 10,
     backgroundColor: '#FFF8EE',
-    borderRadius: 10,
-    width: '30%',
+    // marginHorizontal: 15,
+    paddingVertical: 5,
+    // borderColor: '#FFF8EE', // important
+    // justifyContent: 'center',
+    // marginVertical: 7,
+    // borderRadius: 10,
+    width: '33%',
   },
   nutrientHeading: {
-    fontSize: 16,
-    // marginHorizontal: 5,
-    marginVertical: 5,
-    color: COLORS.nutrientTextColor,
+    // fontSize: 16,
+    // marginVertical: 5,
+    marginBottom: 4,
+    color: '#FF8473',
   },
   nutrientValue: {
-    fontSize: 24,
-    // marginHorizontal: 15,
-    marginVertical: 5,
-    color: COLORS.nutrientTextColor,
+    // fontSize: 24,
+    // marginVertical: 5,
+    color: '#FF8473',
   },
   noFavouritesContainer: {
     // borderWidth: 1,

@@ -15,6 +15,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SearchZero from './SearchZero';
+import LottieView from 'lottie-react-native';
 
 const COLORS = {
   white: '#fff',
@@ -142,7 +143,11 @@ const SearchScreen = () => {
           </View>
           <View style={styles.nutrientDetailsContainer}>
             <View style={styles.nutrientDetailsRowOne}>
-              <View style={styles.nutrientContainer}>
+              <View
+                style={[
+                  styles.nutrientContainer,
+                  {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
+                ]}>
                 <Text style={styles.nutrientHeading}>Calories</Text>
                 <Text style={styles.nutrientValue}>{item.calories}</Text>
               </View>
@@ -152,8 +157,15 @@ const SearchScreen = () => {
                   {item.carbohydrates_total_g}
                 </Text>
               </View>
-              <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Cholestrol (g)</Text>
+              <View
+                style={[
+                  styles.nutrientContainer,
+                  {
+                    borderTopRightRadius: 24,
+                    borderBottomRightRadius: 24,
+                  },
+                ]}>
+                <Text style={styles.nutrientHeading}>Cholestrol (mg)</Text>
                 <Text style={styles.nutrientValue}>{item.cholesterol_mg}</Text>
               </View>
               {/* <View style={styles.nutrientContainer}>
@@ -162,7 +174,11 @@ const SearchScreen = () => {
               </View> */}
             </View>
             <View style={styles.nutrientDetailsRowOne}>
-              <View style={styles.nutrientContainer}>
+              <View
+                style={[
+                  styles.nutrientContainer,
+                  {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
+                ]}>
                 <Text style={styles.nutrientHeading}>Fat (g)</Text>
                 <Text style={styles.nutrientValue}>{item.fat_total_g}</Text>
               </View>
@@ -170,7 +186,14 @@ const SearchScreen = () => {
                 <Text style={styles.nutrientHeading}>Fiber (g)</Text>
                 <Text style={styles.nutrientValue}>{item.fiber_g}</Text>
               </View>
-              <View style={styles.nutrientContainer}>
+              <View
+                style={[
+                  styles.nutrientContainer,
+                  {
+                    borderTopRightRadius: 24,
+                    borderBottomRightRadius: 24,
+                  },
+                ]}>
                 <Text style={styles.nutrientHeading}>Potassium (mg)</Text>
                 <Text style={styles.nutrientValue}>{item.potassium_mg}</Text>
               </View>
@@ -180,7 +203,11 @@ const SearchScreen = () => {
               </View> */}
             </View>
             <View style={styles.nutrientDetailsRowOne}>
-              <View style={styles.nutrientContainer}>
+              <View
+                style={[
+                  styles.nutrientContainer,
+                  {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
+                ]}>
                 <Text style={styles.nutrientHeading}>Protein (g)</Text>
                 <Text style={styles.nutrientValue}>{item.protein_g}</Text>
               </View>
@@ -192,7 +219,14 @@ const SearchScreen = () => {
                 <Text style={styles.nutrientHeading}>Sodium (mg)</Text>
                 <Text style={styles.nutrientValue}>{item.sodium_mg}</Text>
               </View>
-              <View style={styles.nutrientContainer}>
+              <View
+                style={[
+                  styles.nutrientContainer,
+                  {
+                    borderTopRightRadius: 24,
+                    borderBottomRightRadius: 24,
+                  },
+                ]}>
                 <Text style={styles.nutrientHeading}>Sugar (g)</Text>
                 <Text style={styles.nutrientValue}>{item.sugar_g}</Text>
               </View>
@@ -203,7 +237,7 @@ const SearchScreen = () => {
             <TouchableOpacity
               style={styles.addToCartButton}
               onPress={onPressAddToFavourites}>
-              <Text style={styles.addToCartText}>Favorite</Text>
+              <Text style={styles.addToCartText}>Favourite</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.addToCartButton}
@@ -216,11 +250,10 @@ const SearchScreen = () => {
     );
   };
 
-  // console.log(data);
   return (
     <>
       <StatusBar backgroundColor="transparent" />
-      <ScrollView style={styles.searchScreenContainer}>
+      <View style={styles.searchScreenContainer}>
         <View style={styles.searchHeadingContainer}>
           <Text style={styles.searchHeading}>Search</Text>
         </View>
@@ -234,6 +267,7 @@ const SearchScreen = () => {
               placeholderTextColor={COLORS.placeholderTextColor}
               returnKeyType="search"
               onChangeText={setQuery}
+              blurOnSubmit={true}
               value={query}
               onSubmitEditing={searchResult}></TextInput>
 
@@ -245,30 +279,39 @@ const SearchScreen = () => {
 
         {loading ? (
           data?.length > 0 ? (
-            <View>
-              <View style={styles.mealImgContainer}>
-                <Image
-                  style={styles.mealImg}
-                  source={require(`../../assets/meal.png`)}
-                />
-                <Text
-                  style={{
-                    fontSize: 18,
-                    alignSelf: 'center',
-                    color: COLORS.blackForSearchHeading,
-                  }}>
-                  Your intake details
-                </Text>
-              </View>
-              <FlatList data={data} renderItem={renderItems} />
-            </View>
+            <>
+              <FlatList
+                ListHeaderComponent={
+                  <View style={styles.mealImgContainer}>
+                    {/* <Image
+                      style={styles.mealImg}
+                      source={require(`../../assets/meal.png`)}
+                    /> */}
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        alignSelf: 'center',
+                        color: COLORS.blackForSearchHeading,
+                      }}>
+                      Your intake details
+                    </Text>
+                  </View>
+                }
+                data={data}
+                renderItem={renderItems}
+              />
+            </>
           ) : (
-            <ActivityIndicator />
+            <LottieView
+              source={require('../../assets/Lotties Animation/138188-search.json')}
+              autoPlay
+              loop
+            />
           )
         ) : (
           <SearchZero />
         )}
-      </ScrollView>
+      </View>
     </>
   );
 };
@@ -327,8 +370,8 @@ const styles = StyleSheet.create({
     borderColor: COLORS.mealImage,
     alignSelf: 'center',
     marginVertical: 20,
-    height: 200,
-    width: 200,
+    height: 150,
+    width: 150,
     backgroundColor: COLORS.mealImage,
     borderRadius: 20,
   },
@@ -340,71 +383,77 @@ const styles = StyleSheet.create({
   },
   mealDetailsContainer: {},
   mealName: {
-    fontSize: 25,
+    fontSize: 22,
     color: 'black',
     marginLeft: 15,
   },
   nutrientDetailsContainer: {
     // borderWidth: 1,
     borderColor: 'black',
-    marginBottom: 30,
+    marginTop: 8,
   },
   nutrientDetailsRowOne: {
     // borderWidth: 1,
-    borderColor: 'black',
+    borderColor: 'blue',
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    marginVertical: 5,
+    alignSelf: 'center',
+    // width: '100%',
+    borderRadius: 24,
   },
   nutrientContainer: {
+    // borderWidth: 1,
+    borderColor: 'black', // for design evalutaion
     alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#FFF8EE',
-    marginVertical: 7,
     backgroundColor: '#FFF8EE',
-    borderRadius: 10,
-    width: '30%',
+    // marginHorizontal: 15,
+    paddingVertical: 5,
+    // borderColor: '#FFF8EE', // important
+    // justifyContent: 'center',
+    // marginVertical: 7,
+    // borderRadius: 10,
+    width: '33%',
   },
   nutrientHeading: {
-    fontSize: 16,
-    // marginHorizontal: 5,
-    marginVertical: 5,
+    // fontSize: 16,
+    // marginVertical: 5,
+    marginBottom: 4,
     color: '#FF8473',
   },
   nutrientValue: {
-    fontSize: 24,
-    // marginHorizontal: 15,
-    marginVertical: 5,
+    // fontSize: 24,
+    // marginVertical: 5,
     color: '#FF8473',
   },
   addToCartContainer: {
     // borderWidth: 1,
-    // flex: 1,
     borderColor: 'black',
-    justifyContent: 'space-around',
-    width: '100%',
-    borderRadius: 24,
     flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 15,
+    // width: '100%',
+    // borderRadius: 24,
   },
   addToCartButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: COLORS.addToCartGreen,
     // borderWidth: 1,
     borderRadius: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // height: 52,
+    backgroundColor: COLORS.addToCartGreen,
   },
   addToCartText: {
     // borderWidth: 1,
-    height: 72,
-    paddingTop: 17,
-    paddingHorizontal: 25,
-    justifyContent: 'center',
-    borderColor: 'black',
-    fontSize: 25,
-    borderRadius: 24,
+    fontSize: 18,
+    paddingHorizontal: 20,
+    paddingVertical: 12,
     color: 'white',
-    justifyContent: 'center',
-    fontWeight: 600,
+    // height: 72,
+    // // paddingTop: 17,
+    // borderColor: 'black',
+    // borderRadius: 24,
+    // justifyContent: 'center',
+    // fontWeight: 600,
   },
 });
