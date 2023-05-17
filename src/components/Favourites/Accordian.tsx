@@ -171,6 +171,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     backgroundColor: '#FF9385',
     borderRadius: 10,
+    width: '90%',
+    alignSelf: 'center',
   },
   collapseHeaderText: {
     fontSize: 20,
