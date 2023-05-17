@@ -10,20 +10,26 @@ import React, {useState, useEffect, useRef} from 'react';
 import {Camera, useCameraDevices} from 'react-native-vision-camera';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
+import {useIsFocused} from '@react-navigation/native';
 
 const CameraFoodScreen = () => {
+  // All the states are here
   const [imageData, setImageData] = useState(``);
   const [takePhotoClicked, setTakePhotoClicked] = useState(false);
   const [data, setData] = useState({});
 
+  // All the hooks are here
   const devices = useCameraDevices();
   const device = devices.back;
   const camera = useRef(null);
+  const isFocused = useIsFocused();
 
+  // effect are here
   useEffect(() => {
     checkPermission();
   }, []);
 
+  // All the functions are here
   const checkPermission = async () => {
     const newCameraPermission = await Camera.requestCameraPermission();
     console.log(newCameraPermission);
@@ -81,7 +87,7 @@ const CameraFoodScreen = () => {
             ref={camera}
             style={StyleSheet.absoluteFill}
             device={device}
-            isActive={true}
+            isActive={isFocused}
             photo
           />
           <View style={styles.cameraBottomContainer}>
