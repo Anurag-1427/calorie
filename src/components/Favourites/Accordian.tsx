@@ -51,9 +51,9 @@ const Accordian = () => {
       {favourites ? (
         <>
           {Object.keys(favourites).map(key => (
-            <Collapse>
+            <Collapse key={key}>
               <CollapseHeader>
-                <View key={key} style={styles.collapseHeaderContainer}>
+                <View style={styles.collapseHeaderContainer}>
                   <Text style={styles.collapseHeaderText}>
                     {firstLetter(key)}
                   </Text>
