@@ -5,12 +5,10 @@ import {
   StyleSheet,
   TextInput,
   FlatList,
-  Image,
-  ScrollView,
-  ActivityIndicator,
+  ToastAndroid,
   Dimensions,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import axios from 'axios';
@@ -78,6 +76,7 @@ const SearchScreen = () => {
         'mealName',
         JSON.stringify(parsedJsonMealName),
       );
+      ToastAndroid.show('Added to favourites', ToastAndroid.SHORT);
 
       // get krwa ke dekhne ke lie
       const mealName1 = await AsyncStorage.getItem('mealName');
@@ -117,6 +116,8 @@ const SearchScreen = () => {
       'foodDataByDate',
       JSON.stringify(parsedFoodDataByDate),
     );
+
+    ToastAndroid.show('Added to meal list', ToastAndroid.SHORT);
 
     // get krwa ke dekhne ke lie
     const foodDataByDate1 = await AsyncStorage.getItem('foodDataByDate');
