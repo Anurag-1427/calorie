@@ -1,0 +1,25 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Signika-Bold.ttf",
+      "sha1": "80345e24e96ee20981390dc52a23af7d6a2c7a32"
+    },
+    {
+      "path": "src/assets/fonts/Signika-Light.ttf",
+      "sha1": "3439a105a48dfc65b24b7e5483daacd3065fdf60"
+    },
+    {
+      "path": "src/assets/fonts/Signika-Medium.ttf",
+      "sha1": "3bce9207f03d9740ad9d523b27d8a957dc8f4700"
+    },
+    {
+      "path": "src/assets/fonts/Signika-Regular.ttf",
+      "sha1": "f0fcc3d064ab262b9d703ee36ceea64d444e2ac0"
+    },
+    {
+      "path": "src/assets/fonts/Signika-SemiBold.ttf",
+      "sha1": "46ca075c168404d1014c6a84ad7730b520f68b06"
+    }
+  ]
+}
