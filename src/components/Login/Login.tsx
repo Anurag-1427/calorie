@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  ToastAndroid,
 } from 'react-native';
 import React, {useRef, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -58,6 +59,7 @@ const Login = () => {
       );
       console.log(isUserLogin);
       navigator.navigate('BottomTabNavigation');
+      ToastAndroid.show('Login Successfully', ToastAndroid.SHORT);
     } catch (error) {
       console.log(error);
     }

@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  ToastAndroid,
 } from 'react-native';
 import React, {useRef, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -61,6 +62,7 @@ const Register = () => {
 
       console.log(isUserCreated);
       navigator.navigate('Login');
+      ToastAndroid.show('You are registered, now login', ToastAndroid.SHORT);
     } catch (error) {}
   };
 
