@@ -291,7 +291,7 @@ const SearchScreen = () => {
                   <View style={styles.mealImgContainer}>
                     {/* <Image
                       style={styles.mealImg}
-                      source={require(`../../assets/meal.png`)}
+                      source={require(`../../assets/images/meal.png`)}
                     /> */}
                     <Text
                       style={{

@@ -6,7 +6,7 @@ const SearchZero = () => {
     <View style={styles.shoppingBasketContainer}>
       <Image
         style={styles.shoppingBasketImg}
-        source={require('../../assets/shopping-basket.png')}
+        source={require('../../assets/images/shopping-basket.png')}
       />
       <View style={styles.taglineContainer}>
         <Text style={styles.tagline}>Search about your meal</Text>
