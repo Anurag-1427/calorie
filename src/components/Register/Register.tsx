@@ -13,6 +13,7 @@ import auth from '@react-native-firebase/auth';
 const COLORS = {
   green: '#91C788',
   loginBtnColor: '#FF9385',
+  white: '#fff',
 };
 
 const Register = () => {
@@ -147,8 +148,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    borderWidth: 1,
+    // borderWidth: 1,
     borderColor: 'black',
+    backgroundColor: COLORS.white,
   },
   headingContainer: {
     // borderWidth: 1,
