@@ -6,11 +6,6 @@ import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
 
 const ProfileScreen = () => {
-  // const logout = async () => {
-  //   const signout = await auth().signOut();
-  //   console.log(signout);
-  //   console.log('User signed out!!!');
-  // };
   const navigator = useNavigation();
   const logout = () => {
     auth()
@@ -20,7 +15,9 @@ const ProfileScreen = () => {
   };
   return (
     <View style={{flex: 1, justifyContent: 'space-around'}}>
-      <Text style={{alignSelf: 'center'}}>Profile</Text>
+      <Text style={{alignSelf: 'center', fontFamily: 'Signika-Regular'}}>
+        Profile Page
+      </Text>
       <TouchableOpacity
         onPress={logout}
         style={{
@@ -31,7 +28,7 @@ const ProfileScreen = () => {
           alignSelf: 'center',
           borderRadius: 24,
         }}>
-        <Text style={{padding: 15}}>Logout</Text>
+        <Text style={{padding: 15, fontFamily: 'Signika-Regular'}}>Logout</Text>
       </TouchableOpacity>
     </View>
   );

@@ -41,5 +41,6 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     borderColor: 'black',
     alignSelf: 'center',
+    fontFamily: 'Signika-Regular',
   },
 });

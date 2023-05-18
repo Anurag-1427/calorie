@@ -41,9 +41,10 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: 'black',
-    marginVertical: 15,
-    fontSize: 12,
-    lineHeight: 16,
-    fontWeight: 500,
+    fontSize: 24,
+    fontFamily: 'Signika-SemiBold',
+    // marginVertical: 15,
+    // lineHeight: 16,
+    // fontWeight: 500,
   },
 });

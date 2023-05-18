@@ -162,9 +162,10 @@ const styles = StyleSheet.create({
   heading: {
     // borderWidth: 1,
     borderColor: 'black',
-    fontSize: 24,
+    fontSize: 28,
     color: COLORS.green,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: 'Signika-Bold',
   },
   inputParentContainer: {
     // borderWidth: 1,
@@ -178,7 +179,8 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     fontSize: 12,
-    fontWeight: 500,
+    // fontWeight: 500,
+    fontFamily: 'Signika-SemiBold',
     marginLeft: 12,
   },
   textInputParentContainer: {
@@ -205,21 +207,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 20,
     marginLeft: 7,
-  },
-  forgotPasswordContainer: {
-    // borderWidth: 1,
-    borderColor: 'black',
-    width: '85%',
-    alignItems: 'flex-end',
-    marginTop: 12,
-  },
-  forgotPasswordText: {
-    // borderWidth: 1,
-    borderColor: 'black',
-    fontSize: 12,
-    fontWeight: 800,
-    marginRight: 12,
-    color: COLORS.green,
+    fontFamily: 'Signika-Regular',
   },
   registerBtnAndAlreadyHaveAccountContainer: {
     // borderWidth: 1,
@@ -246,6 +234,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     fontSize: 24,
     color: 'white',
+    fontFamily: 'Signika-Regular',
   },
   alreadyHaveAccountContainer: {
     // borderWidth: 1,
@@ -259,6 +248,7 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     borderColor: 'black',
     fontSize: 13,
+    fontFamily: 'Signika-Regular',
   },
   logInBtnContainer: {
     // borderWidth: 1,
@@ -269,8 +259,9 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     borderColor: 'black',
     color: COLORS.green,
-    fontWeight: 800,
+    // fontWeight: 800,
     fontSize: 13,
+    fontFamily: 'Signika-SemiBold',
   },
   forOpacityEnabled: {
     opacity: 1,

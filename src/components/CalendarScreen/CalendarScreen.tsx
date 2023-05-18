@@ -189,8 +189,10 @@ const CalendarScreen = () => {
             marginTop: 150,
             // borderWidth: 1,
           }}>
-          <Text>No meal data</Text>
-          <Text>(Choose the date wisely)</Text>
+          <Text style={{fontFamily: 'Signika-Regular'}}>No meal data</Text>
+          <Text style={{fontFamily: 'Signika-Regular'}}>
+            (Choose the date wisely)
+          </Text>
         </View>
       );
     }
@@ -230,8 +232,12 @@ const CalendarScreen = () => {
           <View style={styles.noDataInCalendarContainer}>
             <View style={styles.iconAndTextContainer}>
               <Ionicons name="calendar-outline" size={80}></Ionicons>
-              <Text>You have no data in calendar</Text>
-              <Text>Kindly refresh for updated data</Text>
+              <Text style={{fontFamily: 'Signika-Regular'}}>
+                You have no data in calendar
+              </Text>
+              <Text style={{fontFamily: 'Signika-Regular'}}>
+                Kindly refresh for updated data
+              </Text>
             </View>
           </View>
         </View>
@@ -253,13 +259,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 10,
-    marginTop: 45,
+    marginTop: 30,
   },
   calendarHeading: {
-    fontSize: 12,
-    lineHeight: 16,
-    fontWeight: 500,
+    fontSize: 24,
     color: COLORS.blackForSearchHeading,
+    fontFamily: 'Signika-SemiBold',
+    // lineHeight: 16,
+    // fontWeight: 500,
   },
   mealDataContainer: {
     // borderWidth: 1,
@@ -279,6 +286,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: 'black',
     marginLeft: 30,
+    fontFamily: 'Signika-Regular',
   },
   nutrientDetailsContainer: {
     // borderWidth: 1,
@@ -290,7 +298,7 @@ const styles = StyleSheet.create({
     borderColor: 'blue',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 5,
+    marginVertical: 3,
     alignSelf: 'center',
     // width: '100%',
     borderRadius: 24,
@@ -300,8 +308,8 @@ const styles = StyleSheet.create({
     // borderColor: 'black', // for design evalutaion
     alignItems: 'center',
     backgroundColor: '#FFF8EE',
-    marginHorizontal: 5,
-    paddingVertical: 5,
+    marginHorizontal: 3,
+    paddingVertical: 8,
     borderColor: '#FFF8EE', // important
     // justifyContent: 'center',
     // marginVertical: 7,
@@ -313,12 +321,14 @@ const styles = StyleSheet.create({
     marginVertical: 4,
     marginBottom: 4,
     color: '#FF8473',
+    fontFamily: 'Signika-Regular',
   },
   nutrientValue: {
     fontSize: 19,
     marginVertical: 5,
     marginTop: 10,
     color: '#FF8473',
+    fontFamily: 'Signika-Regular',
   },
   noDataInCalendarContainer: {
     // borderWidth: 1,

@@ -181,7 +181,9 @@ const Accordian = () => {
         <View style={styles.noFavouritesContainer}>
           <View style={styles.iconAndTextContainer}>
             <Ionicons name="bookmark-outline" size={80}></Ionicons>
-            <Text>You have no favourites</Text>
+            <Text style={{fontFamily: 'Signika-Regular', marginTop: 10}}>
+              You have no favourites
+            </Text>
           </View>
         </View>
       )}
@@ -195,16 +197,18 @@ const styles = StyleSheet.create({
   collapseHeaderContainer: {
     // borderWidth: 1,
     borderColor: 'black',
-    marginBottom: 15,
+    marginTop: 25,
+    // marginBottom: 15,
     backgroundColor: '#FF9385',
     borderRadius: 10,
     width: '90%',
     alignSelf: 'center',
   },
   collapseHeaderText: {
+    // borderWidth: 1,
     fontSize: 20,
     padding: 15,
-    // borderWidth: 1,
+    fontFamily: 'Signika-Regular',
     color: COLORS.white,
     alignSelf: 'center',
     paddingLeft: 20,
@@ -226,14 +230,13 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     borderColor: 'black',
     marginTop: 8,
-    marginBottom: 15,
   },
   nutrientDetailsRowOne: {
     // borderWidth: 1,
     borderColor: 'blue',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 5,
+    marginVertical: 3,
     alignSelf: 'center',
     // width: '100%',
     borderRadius: 24,
@@ -243,8 +246,8 @@ const styles = StyleSheet.create({
     // borderColor: 'black', // for design evalutaion
     alignItems: 'center',
     backgroundColor: '#FFF8EE',
-    marginHorizontal: 5,
-    paddingVertical: 5,
+    marginHorizontal: 3,
+    paddingVertical: 8,
     borderColor: '#FFF8EE', // important
     // justifyContent: 'center',
     // marginVertical: 7,
@@ -256,12 +259,14 @@ const styles = StyleSheet.create({
     marginVertical: 4,
     marginBottom: 4,
     color: '#FF8473',
+    fontFamily: 'Signika-Regular',
   },
   nutrientValue: {
     fontSize: 19,
     marginVertical: 5,
     marginTop: 10,
     color: '#FF8473',
+    fontFamily: 'Signika-Regular',
   },
   noFavouritesContainer: {
     // borderWidth: 1,

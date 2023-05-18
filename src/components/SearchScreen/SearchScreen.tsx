@@ -231,12 +231,22 @@ const SearchScreen = () => {
 
           <View style={styles.addToCartContainer}>
             <TouchableOpacity
-              style={styles.addToCartButton}
+              style={[
+                styles.addToCartButton,
+                {
+                  marginLeft: 12,
+                },
+              ]}
               onPress={onPressAddToFavourites}>
               <Text style={styles.addToCartText}>Favourite</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={styles.addToCartButton}
+              style={[
+                styles.addToCartButton,
+                {
+                  marginRight: 12,
+                },
+              ]}
               onPress={onPressAddToMeal}>
               <Text style={styles.addToCartText}>Add Meal</Text>
             </TouchableOpacity>
@@ -288,6 +298,7 @@ const SearchScreen = () => {
                         fontSize: 18,
                         alignSelf: 'center',
                         marginTop: 25,
+                        fontFamily: 'Signika-Regular',
                         color: COLORS.blackForSearchHeading,
                       }}>
                       Your intake details
@@ -330,8 +341,9 @@ const styles = StyleSheet.create({
   searchHeading: {
     fontSize: 24,
     // lineHeight: 16,
-    fontWeight: 500,
+    // fontWeight: 500,
     color: COLORS.blackForSearchHeading,
+    fontFamily: 'Signika-SemiBold',
   },
   textInputParentContainer: {
     alignItems: 'center',
@@ -354,6 +366,7 @@ const styles = StyleSheet.create({
     height: 64,
     fontSize: 16,
     lineHeight: 20,
+    fontFamily: 'Signika-Regular',
   },
   placeholderTextStyle: {
     paddingLeft: '19.2%',
@@ -382,7 +395,8 @@ const styles = StyleSheet.create({
   mealName: {
     fontSize: 22,
     color: 'black',
-    marginLeft: 30,
+    marginLeft: 32,
+    fontFamily: 'Signika-Medium',
   },
   nutrientDetailsContainer: {
     // borderWidth: 1,
@@ -394,7 +408,7 @@ const styles = StyleSheet.create({
     borderColor: 'blue',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 5,
+    marginVertical: 3,
     alignSelf: 'center',
     // width: '100%',
     borderRadius: 24,
@@ -404,8 +418,8 @@ const styles = StyleSheet.create({
     // borderColor: 'black', // for design evalutaion
     alignItems: 'center',
     backgroundColor: '#FFF8EE',
-    marginHorizontal: 5,
-    paddingVertical: 5,
+    marginHorizontal: 3,
+    paddingVertical: 8,
     borderColor: '#FFF8EE', // important
     // justifyContent: 'center',
     // marginVertical: 7,
@@ -417,19 +431,21 @@ const styles = StyleSheet.create({
     marginVertical: 4,
     marginBottom: 4,
     color: '#FF8473',
+    fontFamily: 'Signika-Regular',
   },
   nutrientValue: {
     fontSize: 19,
     marginVertical: 5,
     marginTop: 10,
     color: '#FF8473',
+    fontFamily: 'Signika-Regular',
   },
   addToCartContainer: {
     // borderWidth: 1,
     borderColor: 'black',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 15,
+    marginTop: 29,
     // width: '100%',
     // borderRadius: 24,
   },
@@ -449,6 +465,7 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 65,
     paddingVertical: 12,
     color: 'white',
+    fontFamily: 'Signika-Regular',
     // height: 72,
     // // paddingTop: 17,
     // borderColor: 'black',

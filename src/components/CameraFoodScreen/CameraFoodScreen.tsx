@@ -216,9 +216,10 @@ const styles = StyleSheet.create({
     borderColor: 'black',
   },
   btnText: {
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     fontSize: 15,
     color: 'white',
+    fontFamily: 'Signika-SemiBold',
   },
   sendBtnContainer: {
     // borderWidth: 1,

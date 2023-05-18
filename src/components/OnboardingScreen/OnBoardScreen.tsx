@@ -111,7 +111,12 @@ const OnBoardScreen = ({navigation}) => {
                 // onPress={() => navigation.replace('HomeScreen')}>
                 onPress={() => navigation.replace('BottomTabNavigation')}>
                 <Text
-                  style={{fontWeight: 'bold', fontSize: 15, color: 'white'}}>
+                  style={{
+                    // fontWeight: 'bold',
+                    fontSize: 15,
+                    color: 'white',
+                    fontFamily: 'Signika-Bold',
+                  }}>
                   GET STARTED
                 </Text>
               </TouchableOpacity>
@@ -131,10 +136,11 @@ const OnBoardScreen = ({navigation}) => {
                 onPress={skip}>
                 <Text
                   style={{
-                    fontWeight: 'bold',
+                    // fontWeight: 'bold',
                     fontSize: 15,
                     // color: COLORS.white,
                     color: COLORS.green,
+                    fontFamily: 'Signika-Bold',
                   }}>
                   SKIP
                 </Text>
@@ -142,7 +148,12 @@ const OnBoardScreen = ({navigation}) => {
               <View style={{width: 15}}></View>
               <TouchableOpacity style={[styles.btn]} onPress={goNextSlide}>
                 <Text
-                  style={{fontWeight: 'bold', fontSize: 15, color: 'white'}}>
+                  style={{
+                    // fontWeight: 'bold',
+                    fontSize: 15,
+                    color: 'white',
+                    fontFamily: 'Signika-Bold',
+                  }}>
                   NEXT
                 </Text>
               </TouchableOpacity>
@@ -189,7 +200,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: COLORS.green,
     marginTop: 88,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: 'Signika-Bold',
   },
   onBoardingScreenImages: {
     height: 282,
@@ -200,10 +212,11 @@ const styles = StyleSheet.create({
   title: {
     // color: COLORS.white,
     fontSize: 22,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     // margin: 20,
     textAlign: 'center',
     color: 'black',
+    fontFamily: 'Signika-Bold',
   },
   subTitle: {
     // color: COLORS.white,
@@ -212,6 +225,7 @@ const styles = StyleSheet.create({
     maxWidth: '70%',
     textAlign: 'center',
     lineHeight: 23,
+    fontFamily: 'Signika-Regular',
   },
   footerContainer: {
     height: height * 0.25,

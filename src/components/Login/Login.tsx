@@ -122,11 +122,11 @@ const Login = () => {
       </View>
 
       {/* This below is for forgot password text */}
-      <View style={styles.forgotPasswordContainer}>
+      {/* <View style={styles.forgotPasswordContainer}>
         <TouchableOpacity>
           <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       {/* Login Button */}
       <View style={styles.loginBtnAndDontHaveAccountContainer}>
@@ -142,7 +142,7 @@ const Login = () => {
           <TouchableOpacity
             style={styles.signUpBtnContainer}
             onPress={registerBtn}>
-            <Text style={styles.signUpBtnText}>Sign Up</Text>
+            <Text style={styles.signUpBtnText}>Register</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -168,9 +168,10 @@ const styles = StyleSheet.create({
   heading: {
     // borderWidth: 1,
     borderColor: 'black',
-    fontSize: 24,
+    fontSize: 28,
     color: COLORS.green,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
+    fontFamily: 'Signika-Bold',
   },
   inputParentContainer: {
     // borderWidth: 1,
@@ -184,7 +185,8 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     fontSize: 12,
-    fontWeight: 500,
+    // fontWeight: 500,
+    fontFamily: 'Signika-SemiBold',
     marginLeft: 12,
   },
   textInputParentContainer: {
@@ -211,6 +213,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 20,
     marginLeft: 7,
+    fontFamily: 'Signika-Regular',
   },
   forgotPasswordContainer: {
     // borderWidth: 1,
@@ -223,7 +226,8 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     borderColor: 'black',
     fontSize: 12,
-    fontWeight: 800,
+    // fontWeight: 800,
+    fontFamily: 'Signika-Bold',
     marginRight: 12,
     color: COLORS.green,
   },
@@ -252,6 +256,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     fontSize: 24,
     color: 'white',
+    fontFamily: 'Signika-Regular',
   },
   dontHaveAccountContainer: {
     // borderWidth: 1,
@@ -265,6 +270,7 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     borderColor: 'black',
     fontSize: 13,
+    fontFamily: 'Signika-Regular',
   },
   signUpBtnContainer: {
     // borderWidth: 1,
@@ -275,7 +281,8 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     borderColor: 'black',
     color: COLORS.green,
-    fontWeight: 800,
+    // fontWeight: 800,
+    fontFamily: 'Signika-SemiBold',
     fontSize: 13,
   },
   forOpacityEnabled: {
