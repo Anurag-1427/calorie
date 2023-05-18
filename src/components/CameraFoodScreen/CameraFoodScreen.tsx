@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {Camera, useCameraDevices} from 'react-native-vision-camera';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
@@ -17,10 +17,11 @@ const CameraFoodScreen = () => {
   const [imageData, setImageData] = useState(``);
   const [takePhotoClicked, setTakePhotoClicked] = useState(false);
   const [data, setData] = useState({});
+  const [cameraPosition, setCameraPosition] = useState('back');
 
   // All the hooks are here
   const devices = useCameraDevices();
-  const device = devices.back;
+  const device = devices[cameraPosition];
   const camera = useRef(null);
   const isFocused = useIsFocused();
 
@@ -46,6 +47,9 @@ const CameraFoodScreen = () => {
       setTakePhotoClicked(false);
     }
   };
+  const flipCamera = useCallback(() => {
+    setCameraPosition(p => (p === 'back' ? 'front' : 'back'));
+  }, []);
 
   const apiUrl = 'https://api.calorieninjas.com/v1/imagetextnutrition';
   const searchResult = async () => {
@@ -97,6 +101,11 @@ const CameraFoodScreen = () => {
                 takePicture();
               }}>
               <View style={styles.innerCameraBtn}></View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.styleflipCamera}
+              onPress={flipCamera}>
+              <Ionicons name="repeat-outline" size={40}></Ionicons>
             </TouchableOpacity>
           </View>
         </View>
@@ -168,6 +177,12 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: '#FF8473',
     borderRadius: 50,
+  },
+  styleflipCamera: {
+    position: 'absolute',
+    bottom: 65,
+    alignSelf: 'flex-end',
+    right: 65,
   },
   imageAndBtnContainer: {
     flex: 1,
