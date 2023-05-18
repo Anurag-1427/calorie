@@ -62,7 +62,7 @@ const index = () => {
               options={{headerShown: false}}
             />
           )}
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Register"
             component={Register}
             options={{headerShown: false}}
@@ -71,7 +71,7 @@ const index = () => {
             name="Login"
             component={Login}
             options={{headerShown: false}}
-          />
+          /> */}
           <Stack.Screen
             name="BottomTabNavigation"
             component={BottomTabNavigation}

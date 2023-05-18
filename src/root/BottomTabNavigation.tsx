@@ -81,7 +81,7 @@ const BottomTabNavigation = () => {
             ),
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
@@ -93,7 +93,7 @@ const BottomTabNavigation = () => {
               <Ionicons name="person-outline" size={25} />
             ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 };

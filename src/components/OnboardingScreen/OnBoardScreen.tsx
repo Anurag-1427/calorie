@@ -109,7 +109,8 @@ const OnBoardScreen = ({navigation}) => {
               <TouchableOpacity
                 style={[styles.btn]}
                 // onPress={() => navigation.replace('HomeScreen')}>
-                onPress={() => navigation.replace('Register')}>
+                // onPress={() => navigation.replace('Register')}>
+                onPress={() => navigation.replace('BottomTabNavigation')}>
                 <Text
                   style={{
                     // fontWeight: 'bold',
