@@ -8,6 +8,7 @@ import {
   Image,
   ScrollView,
   ActivityIndicator,
+  Dimensions,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -24,6 +25,8 @@ const COLORS = {
   mealImage: '#EFF3F6',
   addToCartGreen: '#91C788',
 };
+
+const {width} = Dimensions.get('window');
 
 const SearchScreen = () => {
   // All the states are here
@@ -146,7 +149,7 @@ const SearchScreen = () => {
               <View
                 style={[
                   styles.nutrientContainer,
-                  {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
+                  // {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
                 ]}>
                 <Text style={styles.nutrientHeading}>Calories</Text>
                 <Text style={styles.nutrientValue}>{item.calories}</Text>
@@ -160,10 +163,10 @@ const SearchScreen = () => {
               <View
                 style={[
                   styles.nutrientContainer,
-                  {
-                    borderTopRightRadius: 24,
-                    borderBottomRightRadius: 24,
-                  },
+                  // {
+                  //   borderTopRightRadius: 24,
+                  //   borderBottomRightRadius: 24,
+                  // },
                 ]}>
                 <Text style={styles.nutrientHeading}>Cholestrol (mg)</Text>
                 <Text style={styles.nutrientValue}>{item.cholesterol_mg}</Text>
@@ -177,7 +180,7 @@ const SearchScreen = () => {
               <View
                 style={[
                   styles.nutrientContainer,
-                  {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
+                  // {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
                 ]}>
                 <Text style={styles.nutrientHeading}>Fat (g)</Text>
                 <Text style={styles.nutrientValue}>{item.fat_total_g}</Text>
@@ -189,32 +192,24 @@ const SearchScreen = () => {
               <View
                 style={[
                   styles.nutrientContainer,
-                  {
-                    borderTopRightRadius: 24,
-                    borderBottomRightRadius: 24,
-                  },
+                  // {
+                  //   borderTopRightRadius: 24,
+                  //   borderBottomRightRadius: 24,
+                  // },
                 ]}>
                 <Text style={styles.nutrientHeading}>Potassium (mg)</Text>
                 <Text style={styles.nutrientValue}>{item.potassium_mg}</Text>
               </View>
-              {/* <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Protein (g)</Text>
-                <Text style={styles.nutrientValue}>{item.protein_g}</Text>
-              </View> */}
             </View>
             <View style={styles.nutrientDetailsRowOne}>
               <View
                 style={[
                   styles.nutrientContainer,
-                  {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
+                  // {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
                 ]}>
                 <Text style={styles.nutrientHeading}>Protein (g)</Text>
                 <Text style={styles.nutrientValue}>{item.protein_g}</Text>
               </View>
-              {/* <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Serving Size (g)</Text>
-                <Text style={styles.nutrientValue}>{item.serving_size_g}</Text>
-              </View> */}
               <View style={styles.nutrientContainer}>
                 <Text style={styles.nutrientHeading}>Sodium (mg)</Text>
                 <Text style={styles.nutrientValue}>{item.sodium_mg}</Text>
@@ -222,10 +217,10 @@ const SearchScreen = () => {
               <View
                 style={[
                   styles.nutrientContainer,
-                  {
-                    borderTopRightRadius: 24,
-                    borderBottomRightRadius: 24,
-                  },
+                  // {
+                  //   borderTopRightRadius: 24,
+                  //   borderBottomRightRadius: 24,
+                  // },
                 ]}>
                 <Text style={styles.nutrientHeading}>Sugar (g)</Text>
                 <Text style={styles.nutrientValue}>{item.sugar_g}</Text>
@@ -291,6 +286,7 @@ const SearchScreen = () => {
                       style={{
                         fontSize: 18,
                         alignSelf: 'center',
+                        marginTop: 25,
                         color: COLORS.blackForSearchHeading,
                       }}>
                       Your intake details
@@ -331,8 +327,8 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   searchHeading: {
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: 24,
+    // lineHeight: 16,
     fontWeight: 500,
     color: COLORS.blackForSearchHeading,
   },
@@ -385,7 +381,7 @@ const styles = StyleSheet.create({
   mealName: {
     fontSize: 22,
     color: 'black',
-    marginLeft: 15,
+    marginLeft: 20,
   },
   nutrientDetailsContainer: {
     // borderWidth: 1,
@@ -403,17 +399,17 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
   nutrientContainer: {
-    // borderWidth: 1,
-    borderColor: 'black', // for design evalutaion
+    borderWidth: 1,
+    // borderColor: 'black', // for design evalutaion
     alignItems: 'center',
     backgroundColor: '#FFF8EE',
-    // marginHorizontal: 15,
+    marginHorizontal: 7,
     paddingVertical: 5,
-    // borderColor: '#FFF8EE', // important
+    borderColor: '#FFF8EE', // important
     // justifyContent: 'center',
     // marginVertical: 7,
-    // borderRadius: 10,
-    width: '33%',
+    borderRadius: 20,
+    width: '28%',
   },
   nutrientHeading: {
     // fontSize: 16,
@@ -422,8 +418,9 @@ const styles = StyleSheet.create({
     color: '#FF8473',
   },
   nutrientValue: {
-    // fontSize: 24,
+    fontSize: 17,
     // marginVertical: 5,
+    // marginTop: 1,
     color: '#FF8473',
   },
   addToCartContainer: {
@@ -441,12 +438,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     // height: 52,
+    width: width / 2.5,
+    // marginHorizontal: 5,
     backgroundColor: COLORS.addToCartGreen,
   },
   addToCartText: {
     // borderWidth: 1,
     fontSize: 18,
-    paddingHorizontal: 20,
+    // paddingHorizontal: 65,
     paddingVertical: 12,
     color: 'white',
     // height: 72,
