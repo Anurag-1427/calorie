@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
+  Linking,
 } from 'react-native';
 import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {Camera, useCameraDevices} from 'react-native-vision-camera';
@@ -34,6 +35,7 @@ const CameraFoodScreen = () => {
   const checkPermission = async () => {
     const newCameraPermission = await Camera.requestCameraPermission();
     console.log(newCameraPermission);
+    if (newCameraPermission === 'denied') await Linking.openSettings();
   };
 
   const takePicture = async () => {
