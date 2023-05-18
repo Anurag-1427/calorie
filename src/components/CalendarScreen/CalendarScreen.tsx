@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
   mealName: {
     fontSize: 25,
     color: 'black',
-    marginLeft: 15,
+    marginLeft: 30,
   },
   nutrientDetailsContainer: {
     // borderWidth: 1,
@@ -296,27 +296,28 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
   nutrientContainer: {
-    // borderWidth: 1,
-    borderColor: 'black', // for design evalutaion
+    borderWidth: 1,
+    // borderColor: 'black', // for design evalutaion
     alignItems: 'center',
     backgroundColor: '#FFF8EE',
-    // marginHorizontal: 15,
+    marginHorizontal: 5,
     paddingVertical: 5,
-    // borderColor: '#FFF8EE', // important
+    borderColor: '#FFF8EE', // important
     // justifyContent: 'center',
     // marginVertical: 7,
-    // borderRadius: 10,
-    width: '33%',
+    borderRadius: 20,
+    width: '28%',
   },
   nutrientHeading: {
     // fontSize: 16,
-    // marginVertical: 5,
+    marginVertical: 4,
     marginBottom: 4,
     color: '#FF8473',
   },
   nutrientValue: {
-    // fontSize: 24,
-    // marginVertical: 5,
+    fontSize: 19,
+    marginVertical: 5,
+    marginTop: 10,
     color: '#FF8473',
   },
   noDataInCalendarContainer: {

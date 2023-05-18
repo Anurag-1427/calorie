@@ -381,7 +381,7 @@ const styles = StyleSheet.create({
   mealName: {
     fontSize: 22,
     color: 'black',
-    marginLeft: 20,
+    marginLeft: 30,
   },
   nutrientDetailsContainer: {
     // borderWidth: 1,
@@ -403,7 +403,7 @@ const styles = StyleSheet.create({
     // borderColor: 'black', // for design evalutaion
     alignItems: 'center',
     backgroundColor: '#FFF8EE',
-    marginHorizontal: 7,
+    marginHorizontal: 5,
     paddingVertical: 5,
     borderColor: '#FFF8EE', // important
     // justifyContent: 'center',
@@ -413,14 +413,14 @@ const styles = StyleSheet.create({
   },
   nutrientHeading: {
     // fontSize: 16,
-    // marginVertical: 5,
+    marginVertical: 4,
     marginBottom: 4,
     color: '#FF8473',
   },
   nutrientValue: {
-    fontSize: 17,
-    // marginVertical: 5,
-    // marginTop: 1,
+    fontSize: 19,
+    marginVertical: 5,
+    marginTop: 10,
     color: '#FF8473',
   },
   addToCartContainer: {
