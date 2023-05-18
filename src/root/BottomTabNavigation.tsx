@@ -17,14 +17,12 @@ const BottomTabNavigation = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        // labelStyle: {
-        //   fontSize: 12,
-        //   color: COLORS.splashGreen,
-        // },
+        tabBarLabelStyle: {
+          fontFamily: 'Signika-Regular',
+        },
         tabBarActiveTintColor: COLORS.splashGreen,
         tabBarInactiveTintColor: 'grey',
       }}>
-      {/* screenOptions={{tabBarShowLabel: false}}*/}
       <Tab.Screen
         name="Search"
         component={SearchScreen}
