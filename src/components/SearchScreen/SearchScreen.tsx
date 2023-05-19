@@ -6,7 +6,7 @@ import {
   FlatList,
   ToastAndroid,
 } from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import axios from 'axios';
@@ -27,14 +27,17 @@ const SearchScreen = () => {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
-
+  const [cross, setCross] = useState(true);
   // All the refs are here
   const searchRef = useRef();
+
+  useEffect(() => {}, [data, query, loading, cross]);
 
   // All the functions are here
   const searchResult = () => {
     query == '' && searchRef.current.focus();
     setLoading(true);
+    setCross(false);
     const options = {
       method: 'GET',
       url: 'https://api.calorieninjas.com/v1/nutrition?query=' + query,
@@ -64,6 +67,7 @@ const SearchScreen = () => {
 
   const emptyTheTextInput = () => {
     setQuery('');
+    setCross(!false);
   };
 
   const saveMealName = async item => {
@@ -296,36 +300,38 @@ const SearchScreen = () => {
 
         {loading ? (
           data?.length > 0 ? (
-            <>
-              <FlatList
-                ListHeaderComponent={
-                  <View style={styles.mealImgContainer}>
-                    {/* <Image
+            cross ? (
+              <SearchZero text={'Search about your meal'} />
+            ) : (
+              <>
+                <FlatList
+                  ListHeaderComponent={
+                    <View style={styles.mealImgContainer}>
+                      {/* <Image
                       style={styles.mealImg}
                       source={require(`../../assets/images/meal.png`)}
                     /> */}
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        alignSelf: 'center',
-                        marginTop: 25,
-                        fontFamily: 'Signika-Regular',
-                        color: COLORS.blackForSearchHeading,
-                      }}>
-                      Your intake details
-                    </Text>
-                  </View>
-                }
-                data={data}
-                renderItem={renderItems}
-              />
-            </>
+                      <Text
+                        style={{
+                          fontSize: 18,
+                          alignSelf: 'center',
+                          marginTop: 25,
+                          fontFamily: 'Signika-Regular',
+                          color: COLORS.blackForSearchHeading,
+                        }}>
+                        Your intake details
+                      </Text>
+                    </View>
+                  }
+                  data={data}
+                  renderItem={renderItems}
+                />
+              </>
+            )
           ) : query == '' ? (
             <SearchZero text={'Enter the valid search'} />
-          ) : query.length > 0 ? (
-            <SearchZero text={'Search about your meal'} />
           ) : (
-            <></>
+            <SearchZero text={'No Result Found'} />
           )
         ) : (
           <SearchZero text={'Search about your meal'} />
