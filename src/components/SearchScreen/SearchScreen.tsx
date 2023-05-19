@@ -31,7 +31,15 @@ const SearchScreen = () => {
   // All the refs are here
   const searchRef = useRef();
 
-  useEffect(() => {}, [data, query, loading, cross]);
+  // effect's are here
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      console.log(query);
+      searchResult();
+    }, 1000);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [query]);
 
   // All the functions are here
   const searchResult = () => {
@@ -302,6 +310,8 @@ const SearchScreen = () => {
           data?.length > 0 ? (
             cross ? (
               <SearchZero text={'Search about your meal'} />
+            ) : query == '' ? (
+              <SearchZero text={'Search about your meal'} />
             ) : (
               <>
                 <FlatList
@@ -329,7 +339,7 @@ const SearchScreen = () => {
               </>
             )
           ) : query == '' ? (
-            <SearchZero text={'Enter the valid search'} />
+            <SearchZero text={'Search about your meal'} />
           ) : (
             <SearchZero text={'No Result Found'} />
           )
