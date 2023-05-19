@@ -8,7 +8,7 @@ import {
   ToastAndroid,
   Dimensions,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import axios from 'axios';
@@ -32,8 +32,12 @@ const SearchScreen = () => {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // All the refs are here
+  const searchRef = useRef();
+
   // All the functions are here
   const searchResult = () => {
+    query == '' && searchRef.current.focus();
     setLoading(true);
     const options = {
       method: 'GET',
@@ -275,6 +279,7 @@ const SearchScreen = () => {
               onChangeText={setQuery}
               blurOnSubmit={true}
               value={query}
+              ref={searchRef}
               onSubmitEditing={searchResult}></TextInput>
 
             <TouchableOpacity onPress={searchResult}>
@@ -309,6 +314,8 @@ const SearchScreen = () => {
                 renderItem={renderItems}
               />
             </>
+          ) : query == '' ? (
+            <SearchZero text={'Enter the valid search'} />
           ) : (
             <LottieView
               source={require('../../assets/Lotties Animation/138188-search.json')}
@@ -317,7 +324,7 @@ const SearchScreen = () => {
             />
           )
         ) : (
-          <SearchZero />
+          <SearchZero text={'Search about your meal'} />
         )}
       </View>
     </>

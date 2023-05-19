@@ -1,7 +1,7 @@
 import {View, Text, Image, StyleSheet} from 'react-native';
 import React from 'react';
 
-const SearchZero = () => {
+const SearchZero = ({text}) => {
   return (
     <View style={styles.shoppingBasketContainer}>
       <Image
@@ -9,7 +9,7 @@ const SearchZero = () => {
         source={require('../../assets/images/shopping-basket.png')}
       />
       <View style={styles.taglineContainer}>
-        <Text style={styles.tagline}>Search about your meal</Text>
+        <Text style={styles.tagline}>{text}</Text>
       </View>
     </View>
   );
