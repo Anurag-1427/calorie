@@ -1,5 +1,6 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {styles} from './profileStyles';
 
 // related to auth
 import auth from '@react-native-firebase/auth';
@@ -14,21 +15,10 @@ const ProfileScreen = () => {
     navigator.navigate('Login');
   };
   return (
-    <View style={{flex: 1, justifyContent: 'space-around'}}>
-      <Text style={{alignSelf: 'center', fontFamily: 'Signika-Regular'}}>
-        Profile Page
-      </Text>
-      <TouchableOpacity
-        onPress={logout}
-        style={{
-          borderWidth: 1,
-          borderColor: 'black',
-          width: '70%',
-          alignItems: 'center',
-          alignSelf: 'center',
-          borderRadius: 24,
-        }}>
-        <Text style={{padding: 15, fontFamily: 'Signika-Regular'}}>Logout</Text>
+    <View style={styles.container}>
+      <Text style={styles.profileText}>Profile Page</Text>
+      <TouchableOpacity onPress={logout} style={styles.logoutBtn}>
+        <Text style={styles.logoutBtnText}>Logout</Text>
       </TouchableOpacity>
     </View>
   );

@@ -1,13 +1,7 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text} from 'react-native';
 import React from 'react';
 import Accordian from './Accordian';
-
-const COLORS = {
-  headerTextBlack: '#000',
-  headerBackgroundWhite: '#fff',
-  btnColorGreen: '#91C788',
-  white: '#fff',
-};
+import {styles} from './favStyles';
 
 const Favourites = () => {
   return (
@@ -23,28 +17,3 @@ const Favourites = () => {
 };
 
 export default Favourites;
-
-const styles = StyleSheet.create({
-  favouritesContainer: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  headerContainer: {
-    // borderWidth: 1,
-    borderColor: COLORS.headerTextBlack,
-    backgroundColor: COLORS.headerBackgroundWhite,
-    color: COLORS.headerTextBlack,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30,
-    marginBottom: 15,
-  },
-  headerText: {
-    color: 'black',
-    fontSize: 24,
-    fontFamily: 'Signika-SemiBold',
-    // marginVertical: 15,
-    // lineHeight: 16,
-    // fontWeight: 500,
-  },
-});

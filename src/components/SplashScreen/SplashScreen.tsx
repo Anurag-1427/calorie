@@ -1,6 +1,7 @@
 import {View, Text, StyleSheet, StatusBar, Animated} from 'react-native';
 import React, {useEffect, useRef} from 'react';
 import LottieView from 'lottie-react-native';
+import {styles} from './splashStyles';
 
 const FadeInView = props => {
   const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
@@ -42,26 +43,3 @@ const SplashScreen = () => {
 };
 
 export default SplashScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#91C788',
-    justifyContent: 'center',
-    alignItems: 'center',
-    // flexDirection: 'row',
-  },
-  calCountText: {
-    fontSize: 47,
-    color: '#fff',
-    fontFamily: 'Signika-Regular',
-  },
-  lottieAnimationContainer: {
-    borderColor: '#000',
-    // borderWidth: 1,
-  },
-  lottieAnimation: {
-    width: '25%',
-    // height: '25%',
-  },
-});
