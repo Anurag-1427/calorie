@@ -316,12 +316,10 @@ const SearchScreen = () => {
             </>
           ) : query == '' ? (
             <SearchZero text={'Enter the valid search'} />
+          ) : query.length > 0 ? (
+            <SearchZero text={'Search about your meal'} />
           ) : (
-            <LottieView
-              source={require('../../assets/Lotties Animation/138188-search.json')}
-              autoPlay
-              loop
-            />
+            <></>
           )
         ) : (
           <SearchZero text={'Search about your meal'} />
