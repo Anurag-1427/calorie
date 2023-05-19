@@ -62,6 +62,10 @@ const SearchScreen = () => {
     return name.charAt(0).toUpperCase() + name.slice(1);
   };
 
+  const emptyTheTextInput = () => {
+    setQuery('');
+  };
+
   const saveMealName = async item => {
     try {
       const mealName = await AsyncStorage.getItem('mealName');
@@ -278,9 +282,15 @@ const SearchScreen = () => {
               ref={searchRef}
               onSubmitEditing={searchResult}></TextInput>
 
-            <TouchableOpacity onPress={searchResult}>
-              <Ionicons name="search-outline" size={18}></Ionicons>
-            </TouchableOpacity>
+            {query == '' ? (
+              <TouchableOpacity onPress={searchResult}>
+                <Ionicons name="search-outline" size={18}></Ionicons>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={emptyTheTextInput}>
+                <Ionicons name="close-outline" size={18}></Ionicons>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
 
