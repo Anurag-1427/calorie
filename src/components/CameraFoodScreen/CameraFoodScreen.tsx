@@ -13,7 +13,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 import {useIsFocused} from '@react-navigation/native';
 import {styles} from './cameraStyles';
-import LottieView from 'lottie-react-native';
+import {
+  CAMERA_IMAGE_TEXT_NUTRITION,
+  X_API_KEY,
+  CONTENT_TYPE,
+  ENC_TYPE,
+} from '../../apiUrls/index';
 
 const CameraFoodScreen = () => {
   // All the states are here
@@ -56,7 +61,7 @@ const CameraFoodScreen = () => {
     setCameraPosition(p => (p === 'back' ? 'front' : 'back'));
   }, []);
 
-  const apiUrl = 'https://api.calorieninjas.com/v1/imagetextnutrition';
+  const apiUrl = CAMERA_IMAGE_TEXT_NUTRITION;
   const searchResult = async () => {
     setLoading(true);
     const formData = new FormData();
@@ -69,9 +74,9 @@ const CameraFoodScreen = () => {
     try {
       const response = await axios.post(apiUrl, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
-          'X-Api-Key': '5Dre5zEq8tpfSZi97CGHTQ==k4gRsVuaQ4XuC0DI',
-          enctype: 'multipart/form-data',
+          'Content-Type': CONTENT_TYPE,
+          'X-Api-Key': X_API_KEY,
+          enctype: ENC_TYPE,
           processData: false,
           contentType: false,
         },

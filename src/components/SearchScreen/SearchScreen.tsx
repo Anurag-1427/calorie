@@ -13,6 +13,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SearchZero from './SearchZero';
 import {styles} from './searchScreenStyles';
+import {BASE_URL_NUTRITION, X_API_KEY} from '../../apiUrls/index';
 
 const COLORS = {
   white: '#fff',
@@ -28,6 +29,7 @@ const SearchScreen = () => {
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [cross, setCross] = useState(true);
+
   // All the refs are here
   const searchRef = useRef();
 
@@ -49,10 +51,10 @@ const SearchScreen = () => {
     setCross(false);
     const options = {
       method: 'GET',
-      url: 'https://api.calorieninjas.com/v1/nutrition?query=' + query,
+      url: BASE_URL_NUTRITION + query,
       //   params: {query: 'tomato'},
       headers: {
-        'X-Api-Key': '5Dre5zEq8tpfSZi97CGHTQ==k4gRsVuaQ4XuC0DI',
+        'X-Api-Key': X_API_KEY,
       },
     };
 
