@@ -13,6 +13,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 import {useIsFocused} from '@react-navigation/native';
 import {styles} from './cameraStyles';
+import LottieView from 'lottie-react-native';
 
 const CameraFoodScreen = () => {
   // All the states are here
@@ -20,6 +21,7 @@ const CameraFoodScreen = () => {
   const [takePhotoClicked, setTakePhotoClicked] = useState(false);
   const [data, setData] = useState({});
   const [cameraPosition, setCameraPosition] = useState('back');
+  const [loading, setLoading] = useState(false);
 
   // All the hooks are here
   const devices = useCameraDevices();
@@ -56,6 +58,7 @@ const CameraFoodScreen = () => {
 
   const apiUrl = 'https://api.calorieninjas.com/v1/imagetextnutrition';
   const searchResult = async () => {
+    setLoading(true);
     const formData = new FormData();
     formData.append('image', {
       uri: 'file://' + imageData,
@@ -76,12 +79,19 @@ const CameraFoodScreen = () => {
       console.log('Image uploaded successfully!');
       console.log('Server response:', response.data);
       setData(response.data);
+      setLoading(false);
     } catch (error) {
       console.error('Error uploading image:', error);
     }
   };
 
-  if (device == null) return <ActivityIndicator />;
+  if (device == null)
+    return (
+      <ActivityIndicator
+        size="large"
+        style={{flex: 1, justifyContent: 'center', alignSelf: 'center'}}
+      />
+    );
 
   console.log(data);
   console.log('data?.items');
@@ -118,23 +128,34 @@ const CameraFoodScreen = () => {
             <Image source={{uri: 'file://' + imageData}} style={styles.image} />
           )}
           {imageData !== '' ? (
-            <View style={styles.clickPhotoAndBtn}>
-              <TouchableOpacity
-                style={[styles.btn, {width: '80%'}]}
-                onPress={() => {
-                  setTakePhotoClicked(true);
-                }}>
-                <Text style={styles.btnText}>Click Photo</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.sendBtnContainer}
-                onPress={searchResult}>
-                <Ionicons
-                  name="send-outline"
-                  size={25}
-                  style={{transform: [{rotateZ: '-20deg'}]}}></Ionicons>
-              </TouchableOpacity>
-            </View>
+            <>
+              <View style={styles.clickPhotoAndBtn}>
+                <TouchableOpacity
+                  style={[styles.btn, {width: '80%'}]}
+                  onPress={() => {
+                    setTakePhotoClicked(true);
+                  }}>
+                  <Text style={styles.btnText}>Click Photo</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.sendBtnContainer}
+                  onPress={searchResult}>
+                  <Ionicons
+                    name="send-outline"
+                    size={25}
+                    style={{transform: [{rotateZ: '-20deg'}]}}></Ionicons>
+                </TouchableOpacity>
+              </View>
+              {loading ? (
+                <ActivityIndicator />
+              ) : data.length == 0 ? ( //here data not comes thatswhy difficult to figure out the checks works well or not
+                <View style={styles.resultsContainer}>
+                  <Text>No results found</Text>
+                </View>
+              ) : (
+                <></> // here need to render the details
+              )}
+            </>
           ) : (
             <View style={styles.clickPhotoAndBtn}>
               <TouchableOpacity

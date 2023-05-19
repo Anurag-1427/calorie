@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
     right: 65,
   },
   imageAndBtnContainer: {
+    // borderWidth: 1,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // borderWidth: 1,
     borderColor: 'black',
   },
   image: {
@@ -55,13 +55,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   btn: {
+    // borderWidth: 1,
     height: 72,
     width: '90%',
     borderRadius: 24,
     backgroundColor: '#91C788',
     justifyContent: 'center',
     alignItems: 'center',
-    // borderWidth: 1,
     borderColor: 'black',
   },
   btnText: {
@@ -77,6 +77,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  resultsContainer: {
+    // borderWidth: 1,
+    borderColor: 'black',
+    marginTop: 25,
   },
 });
 

@@ -33,6 +33,7 @@ const SearchScreen = () => {
 
   // effect's are here
   useEffect(() => {
+    query == '' && !searchRef.current.focus();
     const delayDebounceFn = setTimeout(() => {
       console.log(query);
       searchResult();
