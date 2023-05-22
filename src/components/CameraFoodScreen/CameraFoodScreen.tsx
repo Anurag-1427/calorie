@@ -172,15 +172,22 @@ const CameraFoodScreen = () => {
               )}
             </>
           ) : (
-            <View style={styles.clickPhotoAndBtn}>
-              <TouchableOpacity
-                style={[styles.btn, {alignSelf: 'center'}]}
-                onPress={() => {
-                  setTakePhotoClicked(true);
-                }}>
-                <Text style={styles.btnText}>{CLICK_PHOTO}</Text>
-              </TouchableOpacity>
-            </View>
+            <>
+              <View style={styles.cameraHeaderAndBtnContainer}>
+                <View style={styles.headerContainer}>
+                  <Text style={styles.cameraHeaderText}>Camera</Text>
+                </View>
+              </View>
+              <View style={styles.clickPhotoAndBtn}>
+                <TouchableOpacity
+                  style={[styles.btn, {alignSelf: 'center'}]}
+                  onPress={() => {
+                    setTakePhotoClicked(true);
+                  }}>
+                  <Text style={styles.btnText}>{CLICK_PHOTO}</Text>
+                </TouchableOpacity>
+              </View>
+            </>
           )}
         </View>
       )}

@@ -1,5 +1,10 @@
 import {StyleSheet} from 'react-native'
 
+const COLORS = {
+  blackForCameraHeading: '#0D0D0D',
+};
+
+
 const styles = StyleSheet.create({
   activityIndicator: {
     flex: 1, 
@@ -53,6 +58,25 @@ const styles = StyleSheet.create({
     height: '80%',
     marginBottom: 15,
     borderRadius: 20,
+  },
+  cameraHeaderAndBtnContainer: {
+    // borderWidth: 1,
+    borderColor: 'blue',
+  },
+  headerContainer: {
+    // borderWidth: 1,
+    borderColor: 'blue',
+    position: 'absolute',
+    bottom: 250,
+    left: -35,
+  },
+  cameraHeaderText: {
+    // borderWidth: 1,
+    borderColor: 'blue',
+    fontSize: 24,
+    color: COLORS.blackForCameraHeading,
+    fontFamily: 'Signika-SemiBold',
+    
   },
   clickPhotoAndBtn: {
     // borderWidth: 1,
