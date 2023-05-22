@@ -1,6 +1,14 @@
 import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
+  activityIndicator: {
+    flex: 1, 
+    justifyContent: 'center', 
+    alignSelf: 'center'
+  },
+  cameraContainer: {
+    flex: 1,
+  },
   cameraBottomContainer: {
     backgroundColor: 'white',
     height: 168,

@@ -19,6 +19,14 @@ import {
   CONTENT_TYPE,
   ENC_TYPE,
 } from '../../apiUrls/index';
+import {
+  ICON_REPEAT_OUTLINE,
+  ICON_REPEAT_OUTLINE_SIZE,
+  ACTIVITY_INDICATOR_SIZE,
+  CLICK_PHOTO,
+  ICON_SEND_OUTLINE,
+  ICON_SEND_OUTLINE_SIZE,
+} from '../../constants/constants';
 
 const CameraFoodScreen = () => {
   // All the states are here
@@ -49,10 +57,10 @@ const CameraFoodScreen = () => {
   const takePicture = async () => {
     if (camera != null) {
       const photo = await camera.current.takePhoto();
-      console.log(`photo`);
-      console.log(photo);
-      console.log(`photo path`);
-      console.log(photo.path);
+      // console.log(`photo`);
+      // console.log(photo);
+      // console.log(`photo path`);
+      // console.log(photo.path);
       setImageData(photo.path);
       setTakePhotoClicked(false);
     }
@@ -81,30 +89,30 @@ const CameraFoodScreen = () => {
           contentType: false,
         },
       });
-      console.log('Image uploaded successfully!');
-      console.log('Server response:', response.data);
+      // console.log('Image uploaded successfully!');
+      // console.log('Server response:', response.data);
       setData(response.data);
       setLoading(false);
     } catch (error) {
-      console.error('Error uploading image:', error);
+      // console.error('Error uploading image:', error);
     }
   };
 
   if (device == null)
     return (
       <ActivityIndicator
-        size="large"
-        style={{flex: 1, justifyContent: 'center', alignSelf: 'center'}}
+        size={ACTIVITY_INDICATOR_SIZE}
+        style={styles.activityIndicator}
       />
     );
 
-  console.log(data);
-  console.log('data?.items');
-  console.log(data?.items);
+  // console.log(data);
+  // console.log('data?.items');
+  // console.log(data?.items);
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.cameraContainer}>
       {takePhotoClicked ? (
-        <View style={{flex: 1}}>
+        <View style={styles.cameraContainer}>
           <Camera
             ref={camera}
             style={StyleSheet.absoluteFill}
@@ -123,7 +131,9 @@ const CameraFoodScreen = () => {
             <TouchableOpacity
               style={styles.styleflipCamera}
               onPress={flipCamera}>
-              <Ionicons name="repeat-outline" size={40}></Ionicons>
+              <Ionicons
+                name={ICON_REPEAT_OUTLINE}
+                size={ICON_REPEAT_OUTLINE_SIZE}></Ionicons>
             </TouchableOpacity>
           </View>
         </View>
@@ -140,14 +150,14 @@ const CameraFoodScreen = () => {
                   onPress={() => {
                     setTakePhotoClicked(true);
                   }}>
-                  <Text style={styles.btnText}>Click Photo</Text>
+                  <Text style={styles.btnText}>{CLICK_PHOTO}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.sendBtnContainer}
                   onPress={searchResult}>
                   <Ionicons
-                    name="send-outline"
-                    size={25}
+                    name={ICON_SEND_OUTLINE}
+                    size={ICON_SEND_OUTLINE_SIZE}
                     style={{transform: [{rotateZ: '-20deg'}]}}></Ionicons>
                 </TouchableOpacity>
               </View>
@@ -168,7 +178,7 @@ const CameraFoodScreen = () => {
                 onPress={() => {
                   setTakePhotoClicked(true);
                 }}>
-                <Text style={styles.btnText}>Click Photo</Text>
+                <Text style={styles.btnText}>{CLICK_PHOTO}</Text>
               </TouchableOpacity>
             </View>
           )}

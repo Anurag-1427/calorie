@@ -14,6 +14,27 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import SearchZero from './SearchZero';
 import {styles} from './searchScreenStyles';
 import {BASE_URL_NUTRITION, X_API_KEY} from '../../apiUrls/index';
+import {
+  ADD_TO_FAVOURITES_TOAST,
+  ADD_TO_MEAL_LIST_TOAST,
+  ADD_TO_MEAL_TEXT,
+  CALORIES,
+  CARBS_IN_GRAM,
+  CHOLESTROL_IN_MGRAM,
+  FAT_IN_GRAM,
+  FAVOURITES_BUTTON_TEXT,
+  FIBER_IN_GRAM,
+  ICON_CLOSE_OUTLINE,
+  ICON_CLOSE_OUTLINE_SIZE,
+  ICON_SEARCH_OUTLINE,
+  ICON_SEARCH_OUTLINE_SIZE,
+  POTASSIUM_IN_MGRAM,
+  PROTEIN_IN_GRAM,
+  SEARCH,
+  SEARCH_RETURN_TYPE,
+  SODIUM_IN_MGRAM,
+  SUGAR_IN_GRAM,
+} from '../../constants/constants';
 
 const COLORS = {
   white: '#fff',
@@ -61,10 +82,10 @@ const SearchScreen = () => {
     axios
       .request(options)
       .then(function (response) {
-        console.log(`Response`);
-        console.log(response);
-        console.log(`Response data items`);
-        console.log(response.data.items);
+        // console.log(`Response`);
+        // console.log(response);
+        // console.log(`Response data items`);
+        // console.log(response.data.items);
         setData(response.data.items);
       })
       .catch(function (error) {
@@ -95,12 +116,12 @@ const SearchScreen = () => {
         'mealName',
         JSON.stringify(parsedJsonMealName),
       );
-      ToastAndroid.show('Added to favourites', ToastAndroid.SHORT);
+      ToastAndroid.show(ADD_TO_FAVOURITES_TOAST, ToastAndroid.SHORT);
 
       // get krwa ke dekhne ke lie
-      const mealName1 = await AsyncStorage.getItem('mealName');
-      console.log(`MealName1`);
-      console.log(mealName1);
+      // const mealName1 = await AsyncStorage.getItem('mealName');
+      // console.log(`MealName1`);
+      // console.log(mealName1);
     } catch (error) {
       console.log(`Error is:`);
       console.log(error);
@@ -136,12 +157,12 @@ const SearchScreen = () => {
       JSON.stringify(parsedFoodDataByDate),
     );
 
-    ToastAndroid.show('Added to meal list', ToastAndroid.SHORT);
+    ToastAndroid.show(ADD_TO_MEAL_LIST_TOAST, ToastAndroid.SHORT);
 
     // get krwa ke dekhne ke lie
     const foodDataByDate1 = await AsyncStorage.getItem('foodDataByDate');
-    console.log(`foodDataByDate1`);
-    console.log(foodDataByDate1);
+    // console.log(`foodDataByDate1`);
+    // console.log(foodDataByDate1);
   };
 
   // this if for to remove the items from the key 'foodDataByDate'
@@ -150,8 +171,8 @@ const SearchScreen = () => {
   // };
 
   const renderItems = ({item}) => {
-    console.log(`Console`);
-    console.log(item);
+    // console.log(`Console`);
+    // console.log(item);
     const onPressAddToFavourites = () => {
       saveMealName(item);
     };
@@ -166,83 +187,48 @@ const SearchScreen = () => {
           </View>
           <View style={styles.nutrientDetailsContainer}>
             <View style={styles.nutrientDetailsRowOne}>
-              <View
-                style={[
-                  styles.nutrientContainer,
-                  // {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
-                ]}>
-                <Text style={styles.nutrientHeading}>Calories</Text>
+              <View style={[styles.nutrientContainer]}>
+                <Text style={styles.nutrientHeading}>{CALORIES}</Text>
                 <Text style={styles.nutrientValue}>{item.calories}</Text>
               </View>
               <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Carbs (g)</Text>
+                <Text style={styles.nutrientHeading}>{CARBS_IN_GRAM}</Text>
                 <Text style={styles.nutrientValue}>
                   {item.carbohydrates_total_g}
                 </Text>
               </View>
-              <View
-                style={[
-                  styles.nutrientContainer,
-                  // {
-                  //   borderTopRightRadius: 24,
-                  //   borderBottomRightRadius: 24,
-                  // },
-                ]}>
-                <Text style={styles.nutrientHeading}>Cholestrol (mg)</Text>
+              <View style={[styles.nutrientContainer]}>
+                <Text style={styles.nutrientHeading}>
+                  {CHOLESTROL_IN_MGRAM}
+                </Text>
                 <Text style={styles.nutrientValue}>{item.cholesterol_mg}</Text>
               </View>
-              {/* <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Sat. Fat (g)</Text>
-                <Text style={styles.nutrientValue}>{item.fat_saturated_g}</Text>
-              </View> */}
             </View>
             <View style={styles.nutrientDetailsRowOne}>
-              <View
-                style={[
-                  styles.nutrientContainer,
-                  // {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
-                ]}>
-                <Text style={styles.nutrientHeading}>Fat (g)</Text>
+              <View style={[styles.nutrientContainer]}>
+                <Text style={styles.nutrientHeading}>{FAT_IN_GRAM}</Text>
                 <Text style={styles.nutrientValue}>{item.fat_total_g}</Text>
               </View>
               <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Fiber (g)</Text>
+                <Text style={styles.nutrientHeading}>{FIBER_IN_GRAM}</Text>
                 <Text style={styles.nutrientValue}>{item.fiber_g}</Text>
               </View>
-              <View
-                style={[
-                  styles.nutrientContainer,
-                  // {
-                  //   borderTopRightRadius: 24,
-                  //   borderBottomRightRadius: 24,
-                  // },
-                ]}>
-                <Text style={styles.nutrientHeading}>Potassium (mg)</Text>
+              <View style={[styles.nutrientContainer]}>
+                <Text style={styles.nutrientHeading}>{POTASSIUM_IN_MGRAM}</Text>
                 <Text style={styles.nutrientValue}>{item.potassium_mg}</Text>
               </View>
             </View>
             <View style={styles.nutrientDetailsRowOne}>
-              <View
-                style={[
-                  styles.nutrientContainer,
-                  // {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
-                ]}>
-                <Text style={styles.nutrientHeading}>Protein (g)</Text>
+              <View style={[styles.nutrientContainer]}>
+                <Text style={styles.nutrientHeading}>{PROTEIN_IN_GRAM}</Text>
                 <Text style={styles.nutrientValue}>{item.protein_g}</Text>
               </View>
               <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Sodium (mg)</Text>
+                <Text style={styles.nutrientHeading}>{SODIUM_IN_MGRAM}</Text>
                 <Text style={styles.nutrientValue}>{item.sodium_mg}</Text>
               </View>
-              <View
-                style={[
-                  styles.nutrientContainer,
-                  // {
-                  //   borderTopRightRadius: 24,
-                  //   borderBottomRightRadius: 24,
-                  // },
-                ]}>
-                <Text style={styles.nutrientHeading}>Sugar (g)</Text>
+              <View style={[styles.nutrientContainer]}>
+                <Text style={styles.nutrientHeading}>{SUGAR_IN_GRAM}</Text>
                 <Text style={styles.nutrientValue}>{item.sugar_g}</Text>
               </View>
             </View>
@@ -257,7 +243,7 @@ const SearchScreen = () => {
                 },
               ]}
               onPress={onPressAddToFavourites}>
-              <Text style={styles.addToCartText}>Favourite</Text>
+              <Text style={styles.addToCartText}>{FAVOURITES_BUTTON_TEXT}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[
@@ -267,7 +253,7 @@ const SearchScreen = () => {
                 },
               ]}
               onPress={onPressAddToMeal}>
-              <Text style={styles.addToCartText}>Add Meal</Text>
+              <Text style={styles.addToCartText}>{ADD_TO_MEAL_TEXT}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -280,17 +266,15 @@ const SearchScreen = () => {
       <StatusBar backgroundColor="transparent" />
       <View style={styles.searchScreenContainer}>
         <View style={styles.searchHeadingContainer}>
-          <Text style={styles.searchHeading}>Search</Text>
+          <Text style={styles.searchHeading}>{SEARCH}</Text>
         </View>
         <View style={styles.textInputParentContainer}>
           <View style={styles.textInputContainer}>
-            {/* <Ionicons name="search-outline" size={18}></Ionicons> */}
-
             <TextInput
               style={styles.textInput}
-              placeholder="Search"
+              placeholder={SEARCH}
               placeholderTextColor={COLORS.placeholderTextColor}
-              returnKeyType="search"
+              returnKeyType={SEARCH_RETURN_TYPE}
               onChangeText={setQuery}
               blurOnSubmit={true}
               value={query}
@@ -299,11 +283,15 @@ const SearchScreen = () => {
 
             {query == '' ? (
               <TouchableOpacity onPress={searchResult}>
-                <Ionicons name="search-outline" size={18}></Ionicons>
+                <Ionicons
+                  name={ICON_SEARCH_OUTLINE}
+                  size={ICON_SEARCH_OUTLINE_SIZE}></Ionicons>
               </TouchableOpacity>
             ) : (
               <TouchableOpacity onPress={emptyTheTextInput}>
-                <Ionicons name="close-outline" size={18}></Ionicons>
+                <Ionicons
+                  name={ICON_CLOSE_OUTLINE}
+                  size={ICON_CLOSE_OUTLINE_SIZE}></Ionicons>
               </TouchableOpacity>
             )}
           </View>

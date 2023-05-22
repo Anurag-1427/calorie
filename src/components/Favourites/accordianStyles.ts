@@ -96,6 +96,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: '60%',
   },
+  noFavourites: {
+    fontFamily: 'Signika-Regular', 
+    marginTop: 10
+  },
 });
 
 export {styles}

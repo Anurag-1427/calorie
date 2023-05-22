@@ -4,6 +4,25 @@ import {Calendar} from 'react-native-calendars';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {styles} from './calendarStyles';
+import {
+  FOOD_DATA_BY_DATE,
+  ICON_CALENDAR_OUTLINE,
+  ICON_CALENDAR_OUTLINE_SIZE,
+  CALENDAR,
+  NO_DATA_IN_CALENDAR,
+  REFRESH_DATA,
+  CALORIES,
+  CARBS_IN_GRAM,
+  CHOLESTROL_IN_MGRAM,
+  FAT_IN_GRAM,
+  FIBER_IN_GRAM,
+  POTASSIUM_IN_MGRAM,
+  PROTEIN_IN_GRAM,
+  SODIUM_IN_MGRAM,
+  SUGAR_IN_GRAM,
+  NO_MEAL_DATA,
+  CHOOSE_DATE_WISELY,
+} from '../../constants/constants';
 
 const CalendarScreen = () => {
   // This state leads to refresh the screen
@@ -23,9 +42,9 @@ const CalendarScreen = () => {
 
   // Get the data with the help of async storage with previously 'add to meal' from SearchScreen
   const getDataByDate = async () => {
-    const foodDataByDate = await AsyncStorage.getItem('foodDataByDate');
+    const foodDataByDate = await AsyncStorage.getItem(FOOD_DATA_BY_DATE);
     const parsedFoodDataByDate = JSON.parse(foodDataByDate);
-    console.log('parsedFoodDataByDate');
+    // console.log('parsedFoodDataByDate');
     setMealDataByDate(parsedFoodDataByDate);
     console.log(mealDataByDate);
     // console.log(parsedFoodDataByDate['2023-05-08']);
@@ -40,10 +59,10 @@ const CalendarScreen = () => {
     setSelectedDate(day.dateString);
     const mealDataForSelectedDate = mealDataByDate[day.dateString];
     if (mealDataForSelectedDate) {
-      console.log('mealDataForSelectedDate');
-      console.log(mealDataForSelectedDate);
+      // console.log('mealDataForSelectedDate');
+      // console.log(mealDataForSelectedDate);
     } else {
-      console.log('No meal saved');
+      // console.log('No meal saved');
     }
   };
 
@@ -73,13 +92,13 @@ const CalendarScreen = () => {
                       styles.nutrientContainer,
                       {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
                     ]}>
-                    <Text style={styles.nutrientHeading}>Calories</Text>
+                    <Text style={styles.nutrientHeading}>{CALORIES}</Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].calories}
                     </Text>
                   </View>
                   <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Carbs (g)</Text>
+                    <Text style={styles.nutrientHeading}>{CARBS_IN_GRAM}</Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].carbohydrates_total_g}
                     </Text>
@@ -92,15 +111,13 @@ const CalendarScreen = () => {
                         borderBottomRightRadius: 24,
                       },
                     ]}>
-                    <Text style={styles.nutrientHeading}>Cholestrol (mg)</Text>
+                    <Text style={styles.nutrientHeading}>
+                      {CHOLESTROL_IN_MGRAM}
+                    </Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].cholesterol_mg}
                     </Text>
                   </View>
-                  {/* <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Sat. Fat (g)</Text>
-                <Text style={styles.nutrientValue}>{item.fat_saturated_g}</Text>
-              </View> */}
                 </View>
                 <View style={styles.nutrientDetailsRowOne}>
                   <View
@@ -108,13 +125,13 @@ const CalendarScreen = () => {
                       styles.nutrientContainer,
                       {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
                     ]}>
-                    <Text style={styles.nutrientHeading}>Fat (g)</Text>
+                    <Text style={styles.nutrientHeading}>{FAT_IN_GRAM}</Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].fat_total_g}
                     </Text>
                   </View>
                   <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Fiber (g)</Text>
+                    <Text style={styles.nutrientHeading}>{FIBER_IN_GRAM}</Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].fiber_g}
                     </Text>
@@ -127,15 +144,13 @@ const CalendarScreen = () => {
                         borderBottomRightRadius: 24,
                       },
                     ]}>
-                    <Text style={styles.nutrientHeading}>Potassium (mg)</Text>
+                    <Text style={styles.nutrientHeading}>
+                      {POTASSIUM_IN_MGRAM}
+                    </Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].potassium_mg}
                     </Text>
                   </View>
-                  {/* <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Protein (g)</Text>
-                <Text style={styles.nutrientValue}>{item.protein_g}</Text>
-              </View> */}
                 </View>
                 <View style={styles.nutrientDetailsRowOne}>
                   <View
@@ -143,17 +158,17 @@ const CalendarScreen = () => {
                       styles.nutrientContainer,
                       {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
                     ]}>
-                    <Text style={styles.nutrientHeading}>Protein (g)</Text>
+                    <Text style={styles.nutrientHeading}>
+                      {PROTEIN_IN_GRAM}
+                    </Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].protein_g}
                     </Text>
                   </View>
-                  {/* <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Serving Size (g)</Text>
-                <Text style={styles.nutrientValue}>{item.serving_size_g}</Text>
-              </View> */}
                   <View style={styles.nutrientContainer}>
-                    <Text style={styles.nutrientHeading}>Sodium (mg)</Text>
+                    <Text style={styles.nutrientHeading}>
+                      {SODIUM_IN_MGRAM}
+                    </Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].sodium_mg}
                     </Text>
@@ -166,7 +181,7 @@ const CalendarScreen = () => {
                         borderBottomRightRadius: 24,
                       },
                     ]}>
-                    <Text style={styles.nutrientHeading}>Sugar (g)</Text>
+                    <Text style={styles.nutrientHeading}>{SUGAR_IN_GRAM}</Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].sugar_g}
                     </Text>
@@ -179,16 +194,9 @@ const CalendarScreen = () => {
       });
     } else {
       return (
-        <View
-          style={{
-            alignItems: 'center',
-            marginTop: 150,
-            // borderWidth: 1,
-          }}>
-          <Text style={{fontFamily: 'Signika-Regular'}}>No meal data</Text>
-          <Text style={{fontFamily: 'Signika-Regular'}}>
-            (Choose the date wisely)
-          </Text>
+        <View style={styles.noMealDataContainer}>
+          <Text style={styles.noMealTextOrDate}>{NO_MEAL_DATA}</Text>
+          <Text style={styles.noMealTextOrDate}>{CHOOSE_DATE_WISELY}</Text>
         </View>
       );
     }
@@ -196,15 +204,14 @@ const CalendarScreen = () => {
 
   return (
     <ScrollView
-      style={{backgroundColor: 'white'}}
+      style={styles.scrollViewContainer}
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
-      {/* {Object.keys(mealDataByDate || {}) ? ( */}
       {mealDataByDate ? (
         <ScrollView style={styles.container}>
           <View style={styles.calendarHeadingContainer}>
-            <Text style={styles.calendarHeading}>Calendar</Text>
+            <Text style={styles.calendarHeading}>{CALENDAR}</Text>
           </View>
           <Calendar
             onDayPress={onDayPress}
@@ -222,18 +229,18 @@ const CalendarScreen = () => {
       ) : (
         <View style={styles.container}>
           <View style={styles.calendarHeadingContainer}>
-            <Text style={styles.calendarHeading}>Calendar</Text>
+            <Text style={styles.calendarHeading}>{CALENDAR}</Text>
           </View>
           <Calendar />
           <View style={styles.noDataInCalendarContainer}>
             <View style={styles.iconAndTextContainer}>
-              <Ionicons name="calendar-outline" size={80}></Ionicons>
-              <Text style={{fontFamily: 'Signika-Regular'}}>
-                You have no data in calendar
+              <Ionicons
+                name={ICON_CALENDAR_OUTLINE}
+                size={ICON_CALENDAR_OUTLINE_SIZE}></Ionicons>
+              <Text style={styles.noDataInCalendarText}>
+                {NO_DATA_IN_CALENDAR}
               </Text>
-              <Text style={{fontFamily: 'Signika-Regular'}}>
-                Kindly refresh for updated data
-              </Text>
+              <Text style={styles.noDataInCalendarText}>{REFRESH_DATA}</Text>
             </View>
           </View>
         </View>

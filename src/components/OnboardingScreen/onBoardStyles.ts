@@ -73,6 +73,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 3,
     // borderRadius: 2,
   },
+  getStartedBtn: {
+    fontSize: 15,
+    color: 'white',
+    fontFamily: 'Signika-Bold',
+  },
   btn: {
     flex: 1,
     height: 72,
@@ -83,6 +88,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // padding: 5,
   },
+  nextAndSkipBtnContainer: {flexDirection: 'row'},
+  skipBtnContainer: {
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: COLORS.green,
+  },
+  skipBtnText: {
+    fontSize: 15,
+    color: COLORS.green,
+    fontFamily: 'Signika-Bold',
+  },
+  nextBtnText: {
+    fontSize: 15,
+    color: 'white',
+    fontFamily: 'Signika-Bold',
+  },
+
 });
 
 export {styles}

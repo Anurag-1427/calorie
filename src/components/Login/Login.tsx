@@ -10,6 +10,25 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import {styles} from './loginStyles';
+import {
+  EMAIL_REG_EX,
+  PASSWORD_REG_EX,
+  LOGIN_SUCCESS,
+  LOGIN,
+  EMAIL_ADDRESS,
+  ICON_PERSON_OUTLINE,
+  ICON_PERSON_OUTLINE_SIZE,
+  EMAIL_PLACEHOLDER,
+  EMAIL_KEYBOARD_TYPE,
+  EMAIL_RETURN_TYPE,
+  PASSWORD,
+  ICON_LOCK_CLOSED_OUTLINE,
+  ICON_LOCK_CLOSED_OUTLINE_SIZE,
+  PASSWORD_PLACEHOLDER,
+  FORGOT_PASSWORD,
+  DONT_HAVE_AN_ACCOUNT,
+  REGISTER,
+} from '../../constants/constants';
 
 const Login = () => {
   // All the states are here
@@ -25,8 +44,8 @@ const Login = () => {
   const passwordRef = useRef();
 
   // All the regular expressions are here
-  const emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  const passwordRegEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+  const emailRegEx = EMAIL_REG_EX;
+  const passwordRegEx = PASSWORD_REG_EX;
 
   // Checkers
   const emailCheck = email.length > 0 && emailRegEx.test(email);
@@ -44,8 +63,8 @@ const Login = () => {
 
   const loginHandler = async () => {
     try {
-      console.log(`Email: `, email);
-      console.log(`Password: `, password);
+      // console.log(`Email: `, email);
+      // console.log(`Password: `, password);
 
       const isUserLogin = await auth().signInWithEmailAndPassword(
         email,
@@ -53,7 +72,7 @@ const Login = () => {
       );
       console.log(isUserLogin);
       navigator.navigate('BottomTabNavigation');
-      ToastAndroid.show('Login Successfully', ToastAndroid.SHORT);
+      ToastAndroid.show(LOGIN_SUCCESS, ToastAndroid.SHORT);
     } catch (error) {
       console.log(error);
     }
@@ -66,23 +85,24 @@ const Login = () => {
   return (
     <View style={styles.container}>
       <View style={styles.headingContainer}>
-        <Text style={styles.heading}>Login</Text>
+        <Text style={styles.heading}>{LOGIN}</Text>
       </View>
       {/* This below is for email input */}
       <View style={styles.inputParentContainer}>
         <View style={styles.inputLabelContainer}>
-          <Text style={styles.inputLabel}>Email Address</Text>
+          <Text style={styles.inputLabel}>{EMAIL_ADDRESS}</Text>
         </View>
         <View style={styles.textInputParentContainer}>
           <View style={styles.textInputContainer}>
-            <Ionicons name="person-outline" size={18}></Ionicons>
+            <Ionicons
+              name={ICON_PERSON_OUTLINE}
+              size={ICON_PERSON_OUTLINE_SIZE}></Ionicons>
 
             <TextInput
               style={styles.textInput}
-              placeholder="Your Email Address"
-              keyboardType="email-address"
-              returnKeyType="next"
-              // onChangeText={setQuery}
+              placeholder={EMAIL_PLACEHOLDER}
+              keyboardType={EMAIL_KEYBOARD_TYPE}
+              returnKeyType={EMAIL_RETURN_TYPE}
               onChangeText={value => setEmail(value)}
               value={email}
               onSubmitEditing={() => passwordRef.current.focus()}></TextInput>
@@ -92,15 +112,17 @@ const Login = () => {
       {/* This below is for password input */}
       <View style={[styles.inputParentContainer, {marginTop: 25}]}>
         <View style={styles.inputLabelContainer}>
-          <Text style={styles.inputLabel}>Password</Text>
+          <Text style={styles.inputLabel}>{PASSWORD}</Text>
         </View>
         <View style={styles.textInputParentContainer}>
           <View style={styles.textInputContainer}>
-            <Ionicons name="lock-closed-outline" size={18}></Ionicons>
+            <Ionicons
+              name={ICON_LOCK_CLOSED_OUTLINE}
+              size={ICON_LOCK_CLOSED_OUTLINE_SIZE}></Ionicons>
 
             <TextInput
               style={[styles.textInput, {width: '72%'}]}
-              placeholder="Your Password"
+              placeholder={PASSWORD_PLACEHOLDER}
               secureTextEntry={secureTextEntry}
               ref={passwordRef}
               onChangeText={value => setPassword(value)}
@@ -118,7 +140,7 @@ const Login = () => {
       {/* This below is for forgot password text */}
       {/* <View style={styles.forgotPasswordContainer}>
         <TouchableOpacity>
-          <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+          <Text style={styles.forgotPasswordText}>{FORGOT_PASSWORD}</Text>
         </TouchableOpacity>
       </View> */}
 
@@ -128,15 +150,15 @@ const Login = () => {
           <TouchableOpacity
             style={[styles.loginBtn, forOpacity]}
             onPress={loginHandler}>
-            <Text style={styles.loginBtnText}>Login</Text>
+            <Text style={styles.loginBtnText}>{LOGIN}</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.dontHaveAccountContainer}>
-          <Text style={styles.dontHaveAccountText}>Don't Have An Account?</Text>
+          <Text style={styles.dontHaveAccountText}>{DONT_HAVE_AN_ACCOUNT}</Text>
           <TouchableOpacity
             style={styles.signUpBtnContainer}
             onPress={registerBtn}>
-            <Text style={styles.signUpBtnText}>Register</Text>
+            <Text style={styles.signUpBtnText}>{REGISTER}</Text>
           </TouchableOpacity>
         </View>
       </View>

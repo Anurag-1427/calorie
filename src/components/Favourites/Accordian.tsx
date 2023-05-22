@@ -8,6 +8,20 @@ import {
 } from 'accordion-collapse-react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {styles} from './accordianStyles';
+import {
+  CALORIES,
+  CARBS_IN_GRAM,
+  CHOLESTROL_IN_MGRAM,
+  FAT_IN_GRAM,
+  FIBER_IN_GRAM,
+  POTASSIUM_IN_MGRAM,
+  PROTEIN_IN_GRAM,
+  SODIUM_IN_MGRAM,
+  SUGAR_IN_GRAM,
+  ICON_BOOKMARK_OUTLINE,
+  ICON_BOOKMARK_OUTLINE_SIZE,
+  NO_FAVOURITES,
+} from '../../constants/constants';
 
 const Accordian = () => {
   // This state leads to refresh the screen
@@ -26,7 +40,7 @@ const Accordian = () => {
     const mealName = await AsyncStorage.getItem('mealName');
     const parsedJsonMealName = JSON.parse(mealName);
     setFavourites(parsedJsonMealName);
-    console.log(parsedJsonMealName);
+    // console.log(parsedJsonMealName);
   };
 
   useEffect(() => {
@@ -41,7 +55,6 @@ const Accordian = () => {
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }>
-      {/* {Object.keys(favourites) ? ( */}
       {favourites ? (
         <>
           {Object.keys(favourites).map(key => (
@@ -62,13 +75,15 @@ const Accordian = () => {
                           styles.nutrientContainer,
                           {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
                         ]}>
-                        <Text style={styles.nutrientHeading}>Calories</Text>
+                        <Text style={styles.nutrientHeading}>{CALORIES}</Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].calories}
                         </Text>
                       </View>
                       <View style={styles.nutrientContainer}>
-                        <Text style={styles.nutrientHeading}>Carbs (g)</Text>
+                        <Text style={styles.nutrientHeading}>
+                          {CARBS_IN_GRAM}
+                        </Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].carbohydrates_total_g}
                         </Text>
@@ -82,16 +97,12 @@ const Accordian = () => {
                           },
                         ]}>
                         <Text style={styles.nutrientHeading}>
-                          Cholestrol (mg)
+                          {CHOLESTROL_IN_MGRAM}
                         </Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].cholesterol_mg}
                         </Text>
                       </View>
-                      {/* <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Sat. Fat (g)</Text>
-                <Text style={styles.nutrientValue}>{item.fat_saturated_g}</Text>
-              </View> */}
                     </View>
                     <View style={styles.nutrientDetailsRowOne}>
                       <View
@@ -99,13 +110,17 @@ const Accordian = () => {
                           styles.nutrientContainer,
                           {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
                         ]}>
-                        <Text style={styles.nutrientHeading}>Fat (g)</Text>
+                        <Text style={styles.nutrientHeading}>
+                          {FAT_IN_GRAM}
+                        </Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].fat_total_g}
                         </Text>
                       </View>
                       <View style={styles.nutrientContainer}>
-                        <Text style={styles.nutrientHeading}>Fiber (g)</Text>
+                        <Text style={styles.nutrientHeading}>
+                          {FIBER_IN_GRAM}
+                        </Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].fiber_g}
                         </Text>
@@ -119,16 +134,12 @@ const Accordian = () => {
                           },
                         ]}>
                         <Text style={styles.nutrientHeading}>
-                          Potassium (mg)
+                          {POTASSIUM_IN_MGRAM}
                         </Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].potassium_mg}
                         </Text>
                       </View>
-                      {/* <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Protein (g)</Text>
-                <Text style={styles.nutrientValue}>{item.protein_g}</Text>
-              </View> */}
                     </View>
                     <View style={styles.nutrientDetailsRowOne}>
                       <View
@@ -136,17 +147,17 @@ const Accordian = () => {
                           styles.nutrientContainer,
                           {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
                         ]}>
-                        <Text style={styles.nutrientHeading}>Protein (g)</Text>
+                        <Text style={styles.nutrientHeading}>
+                          {PROTEIN_IN_GRAM}
+                        </Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].protein_g}
                         </Text>
                       </View>
-                      {/* <View style={styles.nutrientContainer}>
-                <Text style={styles.nutrientHeading}>Serving Size (g)</Text>
-                <Text style={styles.nutrientValue}>{item.serving_size_g}</Text>
-              </View> */}
                       <View style={styles.nutrientContainer}>
-                        <Text style={styles.nutrientHeading}>Sodium (mg)</Text>
+                        <Text style={styles.nutrientHeading}>
+                          {SODIUM_IN_MGRAM}
+                        </Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].sodium_mg}
                         </Text>
@@ -159,7 +170,9 @@ const Accordian = () => {
                             borderBottomRightRadius: 24,
                           },
                         ]}>
-                        <Text style={styles.nutrientHeading}>Sugar (g)</Text>
+                        <Text style={styles.nutrientHeading}>
+                          {SUGAR_IN_GRAM}
+                        </Text>
                         <Text style={styles.nutrientValue}>
                           {favourites[key].sugar_g}
                         </Text>
@@ -174,10 +187,10 @@ const Accordian = () => {
       ) : (
         <View style={styles.noFavouritesContainer}>
           <View style={styles.iconAndTextContainer}>
-            <Ionicons name="bookmark-outline" size={80}></Ionicons>
-            <Text style={{fontFamily: 'Signika-Regular', marginTop: 10}}>
-              You have no favourites
-            </Text>
+            <Ionicons
+              name={ICON_BOOKMARK_OUTLINE}
+              size={ICON_BOOKMARK_OUTLINE_SIZE}></Ionicons>
+            <Text style={styles.noFavourites}>{NO_FAVOURITES}</Text>
           </View>
         </View>
       )}

@@ -10,6 +10,22 @@ import React, {useRef, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
+import {
+  ALREADY_HAVE_AN_ACCOUNT,
+  EMAIL_ADDRESS,
+  EMAIL_KEYBOARD_TYPE,
+  EMAIL_PLACEHOLDER,
+  EMAIL_RETURN_TYPE,
+  ICON_LOCK_CLOSED_OUTLINE,
+  ICON_LOCK_CLOSED_OUTLINE_SIZE,
+  ICON_PERSON_OUTLINE,
+  ICON_PERSON_OUTLINE_SIZE,
+  LOGIN_BTN,
+  PASSWORD,
+  PASSWORD_PLACEHOLDER,
+  REGISTER,
+  REGISTRATION_TOAST,
+} from '../../constants/constants';
 
 const COLORS = {
   green: '#91C788',
@@ -51,9 +67,9 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      console.log('Hello');
-      console.log(`Email: `, email);
-      console.log(`Password: `, password);
+      // console.log('Hello');
+      // console.log(`Email: `, email);
+      // console.log(`Password: `, password);
 
       const isUserCreated = await auth().createUserWithEmailAndPassword(
         email,
@@ -62,7 +78,7 @@ const Register = () => {
 
       console.log(isUserCreated);
       navigator.navigate('Login');
-      ToastAndroid.show('You are registered, now login', ToastAndroid.SHORT);
+      ToastAndroid.show(REGISTRATION_TOAST, ToastAndroid.SHORT);
     } catch (error) {}
   };
 
@@ -73,23 +89,24 @@ const Register = () => {
   return (
     <View style={styles.container}>
       <View style={styles.headingContainer}>
-        <Text style={styles.heading}>Register</Text>
+        <Text style={styles.heading}>{REGISTER}</Text>
       </View>
       {/* This below is for email input */}
       <View style={styles.inputParentContainer}>
         <View style={styles.inputLabelContainer}>
-          <Text style={styles.inputLabel}>Email Address</Text>
+          <Text style={styles.inputLabel}>{EMAIL_ADDRESS}</Text>
         </View>
         <View style={styles.textInputParentContainer}>
           <View style={styles.textInputContainer}>
-            <Ionicons name="person-outline" size={18}></Ionicons>
+            <Ionicons
+              name={ICON_PERSON_OUTLINE}
+              size={ICON_PERSON_OUTLINE_SIZE}></Ionicons>
 
             <TextInput
               style={styles.textInput}
-              placeholder="Your Email Address"
-              keyboardType="email-address"
-              returnKeyType="next"
-              // onChangeText={setQuery}
+              placeholder={EMAIL_PLACEHOLDER}
+              keyboardType={EMAIL_KEYBOARD_TYPE}
+              returnKeyType={EMAIL_RETURN_TYPE}
               onChangeText={setEmail}
               value={email}
               onSubmitEditing={() => passwordRef.current.focus()}></TextInput>
@@ -99,15 +116,17 @@ const Register = () => {
       {/* This below is for password input */}
       <View style={[styles.inputParentContainer, {marginTop: 25}]}>
         <View style={styles.inputLabelContainer}>
-          <Text style={styles.inputLabel}>Password</Text>
+          <Text style={styles.inputLabel}>{PASSWORD}</Text>
         </View>
         <View style={styles.textInputParentContainer}>
           <View style={styles.textInputContainer}>
-            <Ionicons name="lock-closed-outline" size={18}></Ionicons>
+            <Ionicons
+              name={ICON_LOCK_CLOSED_OUTLINE}
+              size={ICON_LOCK_CLOSED_OUTLINE_SIZE}></Ionicons>
 
             <TextInput
               style={[styles.textInput, {width: '72%'}]}
-              placeholder="Your Password"
+              placeholder={PASSWORD_PLACEHOLDER}
               secureTextEntry={secureTextEntry}
               ref={passwordRef}
               onChangeText={setPassword}
@@ -128,15 +147,15 @@ const Register = () => {
           <TouchableOpacity
             style={[styles.registerBtn, forOpacity]}
             onPress={handleRegister}>
-            <Text style={styles.registerBtnText}>Register</Text>
+            <Text style={styles.registerBtnText}>{REGISTER}</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.alreadyHaveAccountContainer}>
           <Text style={styles.alreadyHaveAccountText}>
-            Already Have An Account?
+            {ALREADY_HAVE_AN_ACCOUNT}
           </Text>
           <TouchableOpacity style={styles.logInBtnContainer} onPress={logInBtn}>
-            <Text style={styles.logInBtnText}>Log In</Text>
+            <Text style={styles.logInBtnText}>{LOGIN_BTN}</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -6,6 +6,7 @@ const COLORS = {
 };
 
 const styles = StyleSheet.create({
+  scrollViewContainer: {backgroundColor: 'white'},
   container: {
     flex: 1,
     backgroundColor: COLORS.white,
@@ -95,11 +96,18 @@ const styles = StyleSheet.create({
     marginTop: 100,
     flex: 1,
   },
+  noDataInCalendarText: {fontFamily: 'Signika-Regular'},
   iconAndTextContainer: {
     // borderWidth: 1,
     borderColor: 'black',
     alignItems: 'center',
   },
+  noMealDataContainer: {
+    alignItems: 'center',
+    marginTop: 150,
+    // borderWidth: 1,
+  },
+  noMealTextOrDate: {fontFamily: 'Signika-Regular'},
 });
 
 export {styles}
