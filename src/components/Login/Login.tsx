@@ -29,6 +29,7 @@ import {
   DONT_HAVE_AN_ACCOUNT,
   REGISTER,
 } from '../../constants/constants';
+import routes from '../../routes';
 
 const Login = () => {
   // All the states are here
@@ -71,7 +72,7 @@ const Login = () => {
         password,
       );
       console.log(isUserLogin);
-      navigator.navigate('BottomTabNavigation');
+      navigator.navigate(routes.BottomTabNavigation.path);
       ToastAndroid.show(LOGIN_SUCCESS, ToastAndroid.SHORT);
     } catch (error) {
       console.log(error);
@@ -80,7 +81,7 @@ const Login = () => {
 
   // Navigation
   const registerBtn = () => {
-    navigator.navigate('Register');
+    navigator.navigate(routes.Register.path);
   };
   return (
     <View style={styles.container}>

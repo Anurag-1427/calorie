@@ -107,3 +107,11 @@ export const ICON_CLOSE_OUTLINE_SIZE = 18;
 
 // Splash Screen
 export const SPLASH_SCREEN_HEADER = 'calCount';
+
+// BottomTabNavigation
+export const ICON_SEARCH = "search";
+export const ICON_BOOKMARK = "bookmark";
+export const ICON_CALENDAR = "calendar";
+export const ICON_CAMERA = "camera";
+export const ICON_CAMERA_OUTLINE = "camera-outline";
+export const ICON_PERSON = "person";

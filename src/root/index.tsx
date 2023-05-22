@@ -12,6 +12,7 @@ import OnBoardScreen from '../components/OnboardingScreen/OnBoardScreen';
 import BottomTabNavigation from './BottomTabNavigation';
 import Register from '../components/Register/Register';
 import Login from '../components/Login/Login';
+import routes from '../routes/index';
 
 const index = () => {
   // Stack for navigation purposes
@@ -48,7 +49,8 @@ const index = () => {
           {/* Splash Screen */}
           {showSplashScreen ? (
             <Stack.Screen
-              name="Splash"
+              // name="Splash"
+              name={routes.SplashScreen.path}
               component={SplashScreen}
               options={{headerShown: false}}
             />
@@ -57,23 +59,24 @@ const index = () => {
           {/* On Boarding Screen */}
           {isAppFirstLaunched && (
             <Stack.Screen
-              name="OnBoardingScreen"
+              // name="OnBoardingScreen"
+              name={routes.OnBoardingScreen.path}
               component={OnBoardScreen}
               options={{headerShown: false}}
             />
           )}
           {/* <Stack.Screen
-            name="Register"
+            name={routes.Register.path}
             component={Register}
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="Login"
+            name={routes.Login.path}
             component={Login}
             options={{headerShown: false}}
           /> */}
           <Stack.Screen
-            name="BottomTabNavigation"
+            name={routes.BottomTabNavigation.path}
             component={BottomTabNavigation}
             options={{headerShown: false}}
           />

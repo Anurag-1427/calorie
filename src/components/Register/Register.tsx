@@ -26,6 +26,7 @@ import {
   REGISTER,
   REGISTRATION_TOAST,
 } from '../../constants/constants';
+import routes from '../../routes';
 
 const COLORS = {
   green: '#91C788',
@@ -77,14 +78,14 @@ const Register = () => {
       );
 
       console.log(isUserCreated);
-      navigator.navigate('Login');
+      navigator.navigate(routes.Login.path);
       ToastAndroid.show(REGISTRATION_TOAST, ToastAndroid.SHORT);
     } catch (error) {}
   };
 
   // Navigation
   const logInBtn = () => {
-    navigator.navigate('Login');
+    navigator.navigate(routes.Login.path);
   };
   return (
     <View style={styles.container}>

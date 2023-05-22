@@ -6,6 +6,7 @@ import {styles} from './profileStyles';
 import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
 import {LOGIN_BUTTON, PROFILE_PAGE_TEXT} from '../../constants/constants';
+import routes from '../../routes';
 
 const ProfileScreen = () => {
   const navigator = useNavigation();
@@ -13,7 +14,7 @@ const ProfileScreen = () => {
     auth()
       .signOut()
       .then(() => console.log('User signed out!'));
-    navigator.navigate('Login');
+    navigator.navigate(routes.Login.path);
   };
   return (
     <View style={styles.container}>
