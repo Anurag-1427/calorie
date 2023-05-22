@@ -5,6 +5,7 @@ import {
   TextInput,
   FlatList,
   ToastAndroid,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -87,6 +88,7 @@ const SearchScreen = () => {
         // console.log(`Response data items`);
         // console.log(response.data.items);
         setData(response.data.items);
+        setLoading(false);
       })
       .catch(function (error) {
         console.error(error);
@@ -100,6 +102,7 @@ const SearchScreen = () => {
   const emptyTheTextInput = () => {
     setQuery('');
     setCross(!false);
+    setLoading(false);
   };
 
   const saveMealName = async item => {
@@ -298,44 +301,42 @@ const SearchScreen = () => {
         </View>
 
         {loading ? (
-          data?.length > 0 ? (
-            cross ? (
-              <SearchZero text={'Search about your meal'} />
-            ) : query == '' ? (
-              <SearchZero text={'Search about your meal'} />
-            ) : (
-              <>
-                <FlatList
-                  ListHeaderComponent={
-                    <View style={styles.mealImgContainer}>
-                      {/* <Image
-                      style={styles.mealImg}
-                      source={require(`../../assets/images/meal.png`)}
-                    /> */}
-                      <Text
-                        style={{
-                          fontSize: 18,
-                          alignSelf: 'center',
-                          marginTop: 25,
-                          fontFamily: 'Signika-Regular',
-                          color: COLORS.blackForSearchHeading,
-                        }}>
-                        Your intake details
-                      </Text>
-                    </View>
-                  }
-                  data={data}
-                  renderItem={renderItems}
-                />
-              </>
-            )
+          <ActivityIndicator />
+        ) : data?.length > 0 ? (
+          cross ? (
+            <SearchZero text={'Search about your meal'} />
           ) : query == '' ? (
             <SearchZero text={'Search about your meal'} />
           ) : (
-            <SearchZero text={'No Result Found'} />
+            <>
+              <FlatList
+                ListHeaderComponent={
+                  <View style={styles.mealImgContainer}>
+                    {/* <Image
+                      style={styles.mealImg}
+                      source={require(`../../assets/images/meal.png`)}
+                    /> */}
+                    <Text
+                      style={{
+                        fontSize: 18,
+                        alignSelf: 'center',
+                        marginTop: 25,
+                        fontFamily: 'Signika-Regular',
+                        color: COLORS.blackForSearchHeading,
+                      }}>
+                      Your intake details
+                    </Text>
+                  </View>
+                }
+                data={data}
+                renderItem={renderItems}
+              />
+            </>
           )
-        ) : (
+        ) : query == '' ? (
           <SearchZero text={'Search about your meal'} />
+        ) : (
+          <SearchZero text={'No Result Found'} />
         )}
       </View>
     </>
