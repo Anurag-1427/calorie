@@ -239,7 +239,7 @@ const SearchScreen = () => {
               style={[
                 styles.addToCartButton,
                 {
-                  marginLeft: 12,
+                  marginLeft: 40,
                 },
               ]}
               onPress={onPressAddToFavourites}>
@@ -249,7 +249,7 @@ const SearchScreen = () => {
               style={[
                 styles.addToCartButton,
                 {
-                  marginRight: 12,
+                  marginRight: 40,
                 },
               ]}
               onPress={onPressAddToMeal}>

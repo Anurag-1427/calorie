@@ -53,6 +53,7 @@ const CalendarScreen = () => {
   useEffect(() => {
     getDataByDate();
   }, []);
+  useEffect(() => {}, [mealDataByDate]);
 
   // Get the data by date:  by pressing on any date in calendar
   const onDayPress = day => {
@@ -75,23 +76,13 @@ const CalendarScreen = () => {
       return mealDataByDate[date].map(meal => {
         return Object.keys(meal).map(foodName => {
           return (
-            // <View key={foodName}>
-            //   <Text>{foodName}</Text>
-            //   <Text>Calories: {meal[foodName].calories}</Text>
-            //   <Text>Serving size (g): {meal[foodName].serving_size_g}</Text>
-            //   {/* Display other nutrition data as needed */}
-            // </View>
             <View style={styles.mealDetailsParentContainer} key={foodName}>
               <View style={styles.mealDetailsContainer}>
                 <Text style={styles.mealName}>{firstLetter(foodName)}</Text>
               </View>
               <View style={styles.nutrientDetailsContainer}>
                 <View style={styles.nutrientDetailsRowOne}>
-                  <View
-                    style={[
-                      styles.nutrientContainer,
-                      {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
-                    ]}>
+                  <View style={[styles.nutrientContainer]}>
                     <Text style={styles.nutrientHeading}>{CALORIES}</Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].calories}
@@ -103,14 +94,7 @@ const CalendarScreen = () => {
                       {meal[foodName].carbohydrates_total_g}
                     </Text>
                   </View>
-                  <View
-                    style={[
-                      styles.nutrientContainer,
-                      {
-                        borderTopRightRadius: 24,
-                        borderBottomRightRadius: 24,
-                      },
-                    ]}>
+                  <View style={[styles.nutrientContainer]}>
                     <Text style={styles.nutrientHeading}>
                       {CHOLESTROL_IN_MGRAM}
                     </Text>
@@ -120,11 +104,7 @@ const CalendarScreen = () => {
                   </View>
                 </View>
                 <View style={styles.nutrientDetailsRowOne}>
-                  <View
-                    style={[
-                      styles.nutrientContainer,
-                      {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
-                    ]}>
+                  <View style={[styles.nutrientContainer]}>
                     <Text style={styles.nutrientHeading}>{FAT_IN_GRAM}</Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].fat_total_g}
@@ -136,14 +116,7 @@ const CalendarScreen = () => {
                       {meal[foodName].fiber_g}
                     </Text>
                   </View>
-                  <View
-                    style={[
-                      styles.nutrientContainer,
-                      {
-                        borderTopRightRadius: 24,
-                        borderBottomRightRadius: 24,
-                      },
-                    ]}>
+                  <View style={[styles.nutrientContainer]}>
                     <Text style={styles.nutrientHeading}>
                       {POTASSIUM_IN_MGRAM}
                     </Text>
@@ -153,11 +126,7 @@ const CalendarScreen = () => {
                   </View>
                 </View>
                 <View style={styles.nutrientDetailsRowOne}>
-                  <View
-                    style={[
-                      styles.nutrientContainer,
-                      {borderTopLeftRadius: 24, borderBottomLeftRadius: 24},
-                    ]}>
+                  <View style={[styles.nutrientContainer]}>
                     <Text style={styles.nutrientHeading}>
                       {PROTEIN_IN_GRAM}
                     </Text>
@@ -173,14 +142,7 @@ const CalendarScreen = () => {
                       {meal[foodName].sodium_mg}
                     </Text>
                   </View>
-                  <View
-                    style={[
-                      styles.nutrientContainer,
-                      {
-                        borderTopRightRadius: 24,
-                        borderBottomRightRadius: 24,
-                      },
-                    ]}>
+                  <View style={[styles.nutrientContainer]}>
                     <Text style={styles.nutrientHeading}>{SUGAR_IN_GRAM}</Text>
                     <Text style={styles.nutrientValue}>
                       {meal[foodName].sugar_g}

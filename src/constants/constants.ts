@@ -10,14 +10,22 @@ export const CHOOSE_DATE_WISELY = '(Choose the date wisely)';
 
 //Below constants are used in SearchScreen, Accordian's Component and Calendar
 export const CALORIES = 'Calories';
-export const CARBS_IN_GRAM = 'Carbs (g)';
-export const CHOLESTROL_IN_MGRAM = 'Cholestrol (mg)';
-export const FAT_IN_GRAM = 'Fat (g)';
-export const FIBER_IN_GRAM = 'Fiber (g)';
-export const POTASSIUM_IN_MGRAM = 'Potassium (mg)';
-export const PROTEIN_IN_GRAM = 'Protein (g)';
-export const SODIUM_IN_MGRAM = 'Sodium (mg)';
-export const SUGAR_IN_GRAM = 'Sugar (g)';
+// export const CARBS_IN_GRAM = 'Carbs (g)';
+export const CARBS_IN_GRAM = 'Carbs';
+// export const CHOLESTROL_IN_MGRAM = 'Cholestrol (mg)';
+export const CHOLESTROL_IN_MGRAM = 'Cholestrol';
+// export const FAT_IN_GRAM = 'Fat (g)';
+export const FAT_IN_GRAM = 'Fat';
+// export const FIBER_IN_GRAM = 'Fiber (g)';
+export const FIBER_IN_GRAM = 'Fiber';
+// export const POTASSIUM_IN_MGRAM = 'Potassium (mg)';
+export const POTASSIUM_IN_MGRAM = 'Potassium';
+// export const PROTEIN_IN_GRAM = 'Protein (g)';
+export const PROTEIN_IN_GRAM = 'Protein';
+// export const SODIUM_IN_MGRAM = 'Sodium (mg)';
+export const SODIUM_IN_MGRAM = 'Sodium';
+// export const SUGAR_IN_GRAM = 'Sugar (g)';
+export const SUGAR_IN_GRAM = 'Sugar';
 
 
 // CameraFood Screen

@@ -5,6 +5,9 @@ const COLORS = {
   headerBackgroundWhite: '#fff',
   nutrientTextColor: '#FF8473',
   white: '#fff',
+  splashGreen: '#91C788',
+  nutrientContainerBackgroundColor: '#EFF7EE',
+  nutrientHeading: '#2E2E2E',
 };
 
 
@@ -14,7 +17,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     marginTop: 25,
     // marginBottom: 15,
-    backgroundColor: '#FF9385',
+    backgroundColor: COLORS.splashGreen,
     borderRadius: 10,
     width: '90%',
     alignSelf: 'center',
@@ -44,43 +47,41 @@ const styles = StyleSheet.create({
   nutrientDetailsContainer: {
     // borderWidth: 1,
     borderColor: 'black',
-    marginTop: 8,
+    marginTop: 15,
   },
   nutrientDetailsRowOne: {
     // borderWidth: 1,
     borderColor: 'blue',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: 3,
     alignSelf: 'center',
-    // width: '100%',
-    borderRadius: 24,
+    marginVertical: 5,
+    width: '70%',
   },
   nutrientContainer: {
-    borderWidth: 1,
-    // borderColor: 'black', // for design evalutaion
+    // borderWidth: 1,
+    borderColor: 'black', // for design evalutaion
     alignItems: 'center',
-    backgroundColor: '#FFF8EE',
+    backgroundColor: COLORS.nutrientContainerBackgroundColor,
     marginHorizontal: 3,
-    paddingVertical: 8,
-    borderColor: '#FFF8EE', // important
-    // justifyContent: 'center',
-    // marginVertical: 7,
-    borderRadius: 20,
-    width: '28%',
+    borderRadius: 10,
+    width: '30%',
+    height: '100%'
   },
   nutrientHeading: {
-    // fontSize: 16,
-    marginVertical: 4,
-    marginBottom: 4,
-    color: '#FF8473',
+    // borderWidth: 1,
+    borderColor: 'black',
+    marginVertical: 5,
+    color: COLORS.nutrientHeading,
     fontFamily: 'Signika-Regular',
   },
   nutrientValue: {
-    fontSize: 19,
+    // borderWidth: 1,
+    borderColor: 'black',
+    fontSize: 20,
     marginVertical: 5,
-    marginTop: 10,
-    color: '#FF8473',
+    // marginTop: 10,
+    color: COLORS.splashGreen,
     fontFamily: 'Signika-Regular',
   },
   noFavouritesContainer: {
