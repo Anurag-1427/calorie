@@ -59,7 +59,7 @@ const SearchScreen = () => {
   useEffect(() => {
     query == '' && !searchRef.current.focus();
     const delayDebounceFn = setTimeout(() => {
-      console.log(query);
+      // console.log(query);
       searchResult();
     }, 1000);
 
@@ -108,13 +108,13 @@ const SearchScreen = () => {
   const saveMealName = async item => {
     try {
       const mealName = await AsyncStorage.getItem('mealName');
-      console.log(`MealName`);
-      console.log(mealName);
+      // console.log(`MealName`);
+      // console.log(mealName);
       const parsedJsonMealName = mealName ? JSON.parse(mealName) : {};
       //Object
       const oye = item.name;
       parsedJsonMealName[oye] = item;
-      console.log(parsedJsonMealName);
+      // console.log(parsedJsonMealName);
       await AsyncStorage.setItem(
         'mealName',
         JSON.stringify(parsedJsonMealName),
@@ -126,8 +126,8 @@ const SearchScreen = () => {
       // console.log(`MealName1`);
       // console.log(mealName1);
     } catch (error) {
-      console.log(`Error is:`);
-      console.log(error);
+      // console.log(`Error is:`);
+      // console.log(error);
     }
   };
 

@@ -50,7 +50,7 @@ const CameraFoodScreen = () => {
   // All the functions are here
   const checkPermission = async () => {
     const newCameraPermission = await Camera.requestCameraPermission();
-    console.log(newCameraPermission);
+    // console.log(newCameraPermission);
     if (newCameraPermission === 'denied') await Linking.openSettings();
   };
 
